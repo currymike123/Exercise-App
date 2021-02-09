@@ -171,8 +171,8 @@
             add(id){
               //Testing how to increase quanity instead of duplicating item
               /* for(let i = 0; i < cart.length; i++){ */
-                /* if(app.cart[i].name == id.name && app.cart[i].qty > 0){
-                  app.cart[i].qty++;
+                /* if(cart[i].name == id.name && cart[i].qty > 0){
+                  cart[i].qty++;
                 }
               } */
               this.cart.push({... this.inventory[id], qty: 1  })
