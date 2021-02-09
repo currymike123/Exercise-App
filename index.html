@@ -119,6 +119,7 @@
 
 
                     <tr  v-for="(x, i) in cart">
+                      
                       <td>{{x.name}}</td>
                       <td>{{x.qty}}</td>
                       <td>{{x.price * x.qty}}</td>
@@ -168,10 +169,17 @@
           },
           methods: {
             add(id){
+              //Testing how to increase quanity instead of duplicating item
+              /* for(let i = 0; i < cart.length; i++){ */
+                /* if(app.cart[i].name == id.name && app.cart[i].qty > 0){
+                  app.cart[i].qty++;
+                }
+              } */
               this.cart.push({... this.inventory[id], qty: 1  })
             }
           }
         })
+       
 
     </script>
 </body>
