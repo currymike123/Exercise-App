@@ -3,8 +3,9 @@
  <nav class="navbar container" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a class="navbar-item" href="/">
-            <i class="fas fa-brain"></i>
+            <i class="fas fa-dumbbell"></i>
             <a id="will-logo">WILL</a>
+             
           </a>
       
           <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -31,9 +32,7 @@
                 <router-link to="/about" class="navbar-item">
                   About
                 </router-link>
-                <a class="navbar-item">
-                  Jobs
-                </a>
+
                 <a class="navbar-item">
                   Contact
                 </a>
