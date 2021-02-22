@@ -1,9 +1,9 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" id='home-img'>
-    <h1>Hi this is new</h1>
- 
+ <div class="container">
+  <div class="notification is-success level-item">
+    <i class="fas fa-dumbbell fa-10x"></i>
   </div>
+</div>
 </template>
 
 <script>
