@@ -6,10 +6,9 @@ const port = 3000
 
 app
     .get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('Welcome to my excercise app!')
     })
-    .get(`/purim`, (req,res) => {
-        res.send("Hello");
+    
     })
 
 app.listen(port, () => {
