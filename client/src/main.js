@@ -7,7 +7,7 @@ import 'bulma';
 import 'buefy/dist/buefy.css';
 import '@fortawesome/fontawesome-free//css/all.css';
 import '/ssas/main.scss';
-import VueP5 from 'vue-p5';
+
 
 Vue.config.productionTip = false
 
