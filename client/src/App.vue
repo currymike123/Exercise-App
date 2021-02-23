@@ -29,13 +29,17 @@
               </a>
       
               <div class="navbar-dropdown">
+                
                 <router-link to="/about" class="navbar-item">
                   About
                 </router-link>
+                
 
-                <a class="navbar-item">
+                
+                <router-link to="/contact" class="navbar-item">
                   Contact
-                </a>
+                </router-link>
+                
                 <hr class="navbar-divider">
                 <a class="navbar-item">
                   Report an issue

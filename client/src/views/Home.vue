@@ -15,11 +15,12 @@
    
    </div>
    <div class="column">
+     This is the write up about the app and all the wonderful things it does to keep you fit and strong.  Here I'll put links and other descriptions of the project and app.
    </div>
   </div>
 
   <div class="notification is-success level-item">
-    <i class="fas fa-dumbbell fa-10x"></i>
+    <i class="fas fa-dumbbell fa-5x"></i>
   </div>
 </div>
 
