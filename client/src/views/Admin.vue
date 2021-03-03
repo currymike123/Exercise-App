@@ -2,18 +2,7 @@
 <div class="container">
   <div class="columns">
     <div class="column is-one-third">
-        <aside class="menu">
-
-            <p class="menu-label">
-            Admin
-            </p>
-
-            <ul class="menu-list">
-            <li><a>Reports</a></li>
-            <li><a>Statistics</a></li>
-            </ul>   
-
-        </aside>
+        <AdminMenu />
     </div>
 
     <div class="column page-offset">
@@ -97,8 +86,13 @@
 </template>
 
 <script>
-export default {
 
+import AdminMenu from "@/components/AdminMenu"
+
+export default {
+  components: {
+    AdminMenu
+  }
 }
 </script>
 

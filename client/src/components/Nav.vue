@@ -18,8 +18,8 @@
           <div class="navbar-start">
 
           <router-link to="/" class="navbar-item">Home</router-link> 
-          <router-link to="/dashboard" class="navbar-item">Dashboard</router-link>
           <router-link to="/notebook" class="navbar-item">Notebook</router-link>
+          <router-link to="/dashboard" class="navbar-item">Dashboard</router-link>
           <router-link to="/tracker" class="navbar-item">Tracker</router-link>
           <router-link to="/friends" class="navbar-item">Friends</router-link>
 

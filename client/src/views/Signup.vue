@@ -5,7 +5,7 @@
             <div class="column">
                 <div class="field">
                 <p class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" type="email" placeholder="Email">
+                    <input class="input" type="email" placeholder="Email">
                     <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
                     </span>
