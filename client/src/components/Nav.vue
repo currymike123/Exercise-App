@@ -50,12 +50,13 @@
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button is-success is-small">
+                <router-link to="/signup" class="button is-success is-small">
                   <strong>Sign up</strong>
-                </a>
-                <a class="button is-success is-small">
+                </router-link>
+                
+                <router-link to="/login" class="button is-success is-small">
                   Log in
-                </a>
+                </router-link>
               </div>
             </div>
           </div>

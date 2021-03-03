@@ -5,7 +5,7 @@
 
  <div class="container">
 
-  <div class="columns level-item m-6">
+  <div class="columns level-item m-6 ">
    <div class="column is-one-half m-6">
     <h1 class="subtitle is-1 ">
       <strong>Will</strong>
@@ -19,9 +19,7 @@
    </div>
   </div>
 
-  <div class="notification is-success level-item">
-    <i class="fas fa-dumbbell fa-5x"></i>
-  </div>
+ 
 </div>
 
 
