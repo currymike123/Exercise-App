@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-    <div class="columns signup">
+    <div class="columns page-offset">
         <div class="column is-one-third"></div>
             <div class="column">
                 <div class="field">
@@ -51,8 +51,6 @@ export default {
 </script>
 
 <style>
-.signup {
-    margin-top: 10%;
-}
+
 
 </style>

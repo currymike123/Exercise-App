@@ -1,8 +1,8 @@
 <template>
  <div class="container">
-    <div class="columns">
+    <div class="columns page-offset">
       <div class="column is-half">
-        <div class="field mt-6">
+        <div class="field">
           <label class="label">Name</label>
             <div class="control">
               <input class="input" type="text">

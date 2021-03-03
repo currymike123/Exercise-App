@@ -17,7 +17,7 @@
         </aside>
     </div>
 
-    <div class="column is-two-thirds">
+    <div class="column is-two-thirds page-offset">
       <div class="card">
         <div class="card-image">
           <figure class="image is-4by3">

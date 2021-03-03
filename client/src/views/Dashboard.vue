@@ -16,7 +16,7 @@
         </aside>
     </div>
 
-    <div class="column top-offset">
+    <div class="column page-offset">
         <nav class="level">
             <div class="level-left">
                 <div class="level-item">
@@ -53,7 +53,7 @@
         <progress class="progress is-primary is-large" value="50" max="100">50</progress>
           
         
-            <table class="table">
+            <table class="table dash-offset">
                 <thead>
                     <tr>
                     <th>Date</th>
@@ -115,8 +115,8 @@ export default {
 </script>
 
 <style>
-.top-offset {
-    margin-top: 3%;
+.dash-offset {
+    margin-top: 10%;
 }
 
 </style>
