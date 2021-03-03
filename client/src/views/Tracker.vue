@@ -17,23 +17,20 @@
         </aside>
     </div>
 
-    <div class="column is-two-thirds"><div class="card">
-  <div class="card-image">
-    <figure class="image is-4by3">
-      <img src="http://ontheworldmap.com/usa/state/new-york/map-of-new-york.jpg" alt="Placeholder image">
-    </figure>
-  </div>
-  <div class="card-content">
-   <h1>Starting Location</h1>
-
-   
-  </div>
+    <div class="column is-two-thirds">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img src="http://ontheworldmap.com/usa/state/new-york/map-of-new-york.jpg" alt="Placeholder image">
+          </figure>
+        </div>
+        <div class="card-content">
+        <h1>Starting Location</h1>
+    </div>
 </div>
-
-    </div>
-
-    </div>
-  </div>
+</div>
+</div>
+</div>
                 
 </template>
 

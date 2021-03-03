@@ -1,6 +1,6 @@
 <template>
 <div class="container">
-    <div class="columns">
+    <div class="columns login">
         <div class="column is-one-third"></div>
             <div class="column">
                 <div class="field">
@@ -43,7 +43,7 @@ export default {
 </script>
 
 <style scoped>
-.column {
+.login {
     margin-top: 10%;
 }
 
