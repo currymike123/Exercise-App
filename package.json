@@ -4,9 +4,6 @@
   "description": "The server package for our application",
   "scripts": {
     "dev": "nodemon server/index.js",
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
     "start": "node server/index.js"
   },
   "dependencies": {
