@@ -4,9 +4,8 @@
   "description": "The server package for our application",
   "scripts": {
     "dev": "nodemon server/index.js",
-    "build": "cd client && npm run build",
-    "install": "cd client && npm install",
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "dependencies": {
     "express": "4.17.1",
