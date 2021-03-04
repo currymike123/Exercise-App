@@ -15,6 +15,7 @@ app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
 */
+/*Updated server to connect to client */
 
 const express = require('express')
 const serveStatic = require('serve-static')

@@ -9,7 +9,7 @@
         <section class="section">
         <h1 class="title">Welcome to the Dashboard</h1>
         <h2 class="subtitle">
-            You can track your exercise progress.
+            You can track your exercise progress here.
         </h2>
         </section>
     </div>
