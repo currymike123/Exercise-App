@@ -51,12 +51,6 @@
               <a href="#" class="card-footer-item">UnFriend</a>
             </footer>
             </div>
-            
-
-
-
-
-
         </div>
         <div class="column page-offset">
               <div class="card">
