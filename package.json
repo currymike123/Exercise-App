@@ -4,6 +4,8 @@
   "description": "The server package for our application",
   "scripts": {
     "dev": "nodemon server/index.js",
+    "build": "cd client && npm run build",
+    "install": "cd client && npm install",
     "start": "node server/index.js"
   },
   "dependencies": {
