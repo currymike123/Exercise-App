@@ -15,7 +15,7 @@
    
    </div>
    <div class="column m-6">
-     This is the write up about the app and all the wonderful things it does to keep you fit and strong.  Here I'll put links and other descriptions of the project and app.
+     This is the write up about the app and all the wonderful things it does to keep you fit and strong.  Here I'll put links and other descriptions of the app.
    </div>
   </div>
 
