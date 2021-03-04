@@ -3,9 +3,16 @@
   "version": "1.0.0",
   "description": "The server package for our application",
   "scripts": {
-    "dev": "nodemon server/index.js",
+    /*"dev": "nodemon server/index.js",
     "build": "cd client && npm install && npm run build",
-    "start": "node server/index.js"
+    "start": "node server/index.js",*/
+
+    "client": "cd client && yarn start",
+    "server": "nodemon server/index.js",
+    "build": "cd client && npm run build",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "start": "node server/index.js",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
     
   },
   "dependencies": {
