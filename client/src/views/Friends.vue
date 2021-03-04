@@ -8,9 +8,6 @@
                 Friends
                 </p>
 
-                <ul class="menu-list">
-                <li><a>Feed</a></li>
-                </ul>   
 
             </aside>
             
@@ -64,9 +61,17 @@
         <div class="column page-offset">
               <div class="card">
                 <header class="card-header level">
-                    <p class="card-header-title level-left">
-                      John Smith
-                    </p>
+                    <div class="media pl-3 pt-3">
+                      <div class="media-left">
+                        <figure class="image is-48x48">
+                          <img src="https://www.randomlists.com/img/people/ray_romano.webp" alt="Placeholder image">
+                        </figure>
+                      </div>
+                      <div class="media-content">
+                        <p class="title is-4">John Smith</p>
+                        <p class="subtitle is-6">@johnsmith</p>
+                      </div>
+                    </div>
                     <div class="level-right pr-3">
                       <time datetime="2016-1-1">11:09 PM - 1 Jan 2016 </time>
                     </div>
@@ -105,9 +110,17 @@
           <div class="column page-offset">
               <div class="card">
                 <header class="card-header level">
-                    <p class="card-header-title level-left">
-                      Jane Doe
-                    </p>
+                    <div class="media pl-3 pt-3">
+                      <div class="media-left">
+                        <figure class="image is-48x48">
+                          <img src="https://www.randomlists.com/img/people/courteney_cox.webp" alt="Placeholder image">
+                        </figure>
+                      </div>
+                      <div class="media-content">
+                        <p class="title is-4">Jane Doe</p>
+                        <p class="subtitle is-6">@janedoe</p>
+                      </div>
+                    </div>
                     <div class="level-right pr-3">
                       <time datetime="2016-1-1">5:09 PM - 1 Feb 2020 </time>
                     </div>
@@ -155,7 +168,7 @@ export default {
 
 <style>
 .friends-search {
-  padding-top: 20%;
+  padding-top: 12%;
 }
 
 </style>
