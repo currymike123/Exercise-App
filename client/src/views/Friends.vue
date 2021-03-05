@@ -14,6 +14,7 @@
             <div class="control friends-search">
                <input class="input" type="text">
             </div>
+               
             <div class="field">
               <p class="control mt-1">
                <button class="button is-success">
