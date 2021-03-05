@@ -1,34 +1,30 @@
 <template>
-<div class="container">
-  <div class="columns">
-    <div class="column is-one-third">
-       <DashboardMenu />
-    </div>
+  <div class="container">
+    <div class="columns">
+      <div class="column is-one-third">
+        <DashboardMenu />
+      </div>
 
-    <div class="column page-offset">
+      <div class="column page-offset">
         <section class="section">
-        <h1 class="title">Welcome to the Dashboard</h1>
-        <h2 class="subtitle">
+          <h1 class="title">Welcome to the Dashboard</h1>
+          <h2 class="subtitle">
             You can track your exercise progress here.
-        </h2>
+          </h2>
         </section>
+      </div>
     </div>
-</div>
-</div>
-
+  </div>
 </template>
 
 <script>
-import DashboardMenu from "@/components/DashboardMenu"
+import DashboardMenu from "@/components/DashboardMenu";
 
 export default {
   components: {
-    DashboardMenu
-  }
-}
+    DashboardMenu,
+  },
+};
 </script>
 
-<style>
-
-
-</style>
+<style></style>

@@ -1,38 +1,36 @@
 <template>
-<div class="container">
-  <div class="columns">
-    <div class="column is-one-third">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-one-third">
         <AdminMenu />
-    </div>
+      </div>
 
-    <div class="column page-offset">
+      <div class="column page-offset">
         <section class="section">
-        <h1 class="title">Welcome to Will!</h1>
-        <h2 class="subtitle">
-            Please fill out the <router-link to="/account">Account</router-link> section for a better experience.
-        </h2>
+          <h1 class="title">Welcome to Will!</h1>
+          <h2 class="subtitle">
+            Please fill out the
+            <router-link to="/account">Account</router-link> section for a
+            better experience.
+          </h2>
         </section>
+      </div>
     </div>
-    
-</div>
-</div>
-
+  </div>
 </template>
 
 <script>
-
-import AdminMenu from "@/components/AdminMenu"
+import AdminMenu from "@/components/AdminMenu";
 
 export default {
   components: {
-    AdminMenu
-  }
-}
+    AdminMenu,
+  },
+};
 </script>
 
 <style>
 .admin-offset {
-    margin-top: 10%;
+  margin-top: 10%;
 }
-
 </style>
