@@ -8,17 +8,44 @@
           </p>
         </aside>
 
-        <div class="control friends-search">
-          <input class="input" type="text" />
-        </div>
-
-        <div class="field">
-          <p class="control mt-1">
-            <button class="button is-success">
-              Search
-            </button>
+        <article class="panel is-success mt-6">
+          <p class="panel-tabs">
+            <a>Search</a>
+            <a>Friends</a>
+            <a>Suggest</a>
           </p>
-        </div>
+          <div class="panel-block">
+            <p class="control has-icons-left">
+              <input
+                class="input is-success"
+                type="text"
+                placeholder="Search"
+              />
+              <span class="icon is-left">
+                <i class="fas fa-search" aria-hidden="true"></i>
+              </span>
+            </p>
+          </div>
+
+          <a class="panel-block">
+            <figure class="image is-48x48">
+              <img
+                src="https://www.randomlists.com/img/people/ray_romano.webp"
+                alt="Placeholder image"
+              />
+            </figure>
+            <div class="ml-3">John Smith</div>
+          </a>
+          <a class="panel-block">
+            <figure class="image is-48x48">
+              <img
+                src="https://www.randomlists.com/img/people/courteney_cox.webp"
+                alt="Placeholder image"
+              />
+            </figure>
+            <div class="ml-3">Jane Doe</div>
+          </a>
+        </article>
 
         <div class="card m-6">
           <div class="card-image">
