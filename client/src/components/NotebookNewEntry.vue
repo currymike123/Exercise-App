@@ -2,34 +2,34 @@
   <div class="card">
     <header class="card-header">
       <p class="card-header-title">
-        <time :datetime="post.time">{{ post.time }}</time>
+        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
       </p>
     </header>
     <div class="card-content">
       <div class="content">
         <label class="label mt-1">Exercise</label>
-        <div class="content">
-          {{ post.exercise }}
+        <div class="control">
+          <input class="input" type="text" />
         </div>
         <label class="label mt-1">Reps</label>
-        <div class="content">
-          {{ post.reps }}
+        <div class="control">
+          <input class="input" type="text" />
         </div>
         <label class="label mt-1">Sets</label>
-        <div class="content">
-          {{ post.sets }}
+        <div class="control">
+          <input class="input" type="text" />
         </div>
         <label class="label mt-1">Distance</label>
-        <div class="content">
-          {{ post.distance }}
+        <div class="control">
+          <input class="input" type="text" />
         </div>
         <label class="label mt-1">Duration</label>
-        <div class="content">
-          {{ post.duration }}
+        <div class="control">
+          <input class="input" type="text" />
         </div>
         <label class="label mt-1">Notes</label>
-        <div class="content">
-          {{ post.notes }}
+        <div class="control">
+          <input class="input is-large" type="text" />
         </div>
       </div>
     </div>
@@ -42,11 +42,7 @@
 </template>
 
 <script>
-export default {
-  props: {
-    post: Object,
-  },
-};
+export default {};
 </script>
 
 <style></style>

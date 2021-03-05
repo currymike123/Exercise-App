@@ -13,10 +13,12 @@
         </aside>
       </div>
       <div class="column page-offset">
-        <NotebookEntry />
+        <NotebookNewEntry />
       </div>
       <div class="column page-offset">
-        <NotebookEntry />
+        <div class="content-item" v-for="(post, i) in posts" :key="i">
+          <NotebookEntry :post="post" />
+        </div>
       </div>
     </div>
   </div>
@@ -24,9 +26,25 @@
 
 <script>
 import NotebookEntry from "../components/NotebookEntry";
+import NotebookNewEntry from "../components/NotebookNewEntry";
 export default {
+  data: () => ({
+    posts: [
+      {
+        exercise: "100 lb lift",
+        reps: "10",
+        set: "5",
+        distance: "N/A",
+        duration: "30 mins",
+        notes:
+          "Loved today's workout! Can't wait to get back into the gym and get back at it",
+        time: Date(),
+      },
+    ],
+  }),
   components: {
     NotebookEntry,
+    NotebookNewEntry,
   },
 };
 </script>
