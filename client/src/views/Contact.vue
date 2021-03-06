@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <div class="columns page-offset">
-      <div class="column is-half">
+      <div class="column is-one-quarter"></div>
+      <div class="column is-one-half">
         <div class="field">
           <label class="label">Name</label>
           <div class="control">
@@ -13,14 +14,16 @@
           </div>
           <textarea class="textarea mt-5" placeholder="Message"></textarea>
         </div>
+        <div class="field mt-3">
+          <p class="control">
+            <a class="button is-primary">
+              Submit
+            </a>
+          </p>
+        </div>
       </div>
-    </div>
-    <div class="field mt-3">
-      <p class="control">
-        <a class="button is-primary">
-          Submit
-        </a>
-      </p>
+
+      <div class="column is-one-quarter"></div>
     </div>
   </div>
 </template>
