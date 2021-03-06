@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="columns level-item m-6 ">
+  <div class="container page-offset">
+    <div class="columns">
       <div class="column is-one-half m-6">
         <h1 class="subtitle is-1 ">
           <strong>Will</strong>
@@ -9,7 +9,7 @@
           to keep going all day.
         </h1>
       </div>
-      <div class="column m-6">
+      <div class="column m-6 pt-6">
         This is the write up about the app and all the wonderful things it does
         to keep you fit and strong. Here I'll put links and other descriptions
         of the app.
