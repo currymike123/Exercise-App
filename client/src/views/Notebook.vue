@@ -17,7 +17,7 @@
       </div>
       <div class="column page-offset">
         <div class="content-item" v-for="(entry, i) in entries" :key="i">
-          <NotebookEntry :entry="newEntry" />
+          <NotebookEntry :entry="entry" />
         </div>
       </div>
     </div>
