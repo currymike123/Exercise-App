@@ -1,11 +1,7 @@
 <template>
   <div class="card">
-    <form @submit.prevent="addEntry()">
-      <header class="card-header">
-        <p class="card-header-title">
-          <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-        </p>
-      </header>
+    <form @submit.prevent="$emit('add')">
+      <header class="card-header"></header>
       <div class="card-content">
         <div class="content">
           <label class="label mt-1">Exercise</label>
@@ -64,19 +60,14 @@
         </div>
       </footer>
     </form>
+    <pre>      {{ newEntry }}</pre>
   </div>
 </template>
 
 <script>
 export default {
-  data: () => ({
-    newEntry: {},
-  }),
-  methods: {
-    addPost() {
-      this.posts.unshift(this.newEntry);
-      this.newEntry = {};
-    },
+  props: {
+    newEntry: Object,
   },
 };
 </script>

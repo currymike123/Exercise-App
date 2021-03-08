@@ -13,11 +13,11 @@
         </aside>
       </div>
       <div class="column page-offset">
-        <NotebookNewEntry />
+        <notebook-new-entry :newEntry="newEntry" @add="addEntry" />
       </div>
       <div class="column page-offset">
-        <div class="content-item" v-for="(post, i) in posts" :key="i">
-          <NotebookEntry :post="post" />
+        <div class="content-item" v-for="(entry, i) in entries" :key="i">
+          <NotebookEntry :entry="newEntry" />
         </div>
       </div>
     </div>
@@ -25,28 +25,26 @@
 </template>
 
 <script>
+import Vue from "vue";
 import NotebookEntry from "../components/NotebookEntry";
 import NotebookNewEntry from "../components/NotebookNewEntry";
-export default {
+
+export default Vue.extend({
   data: () => ({
-    posts: [
-      {
-        exercise: "100 lb lift",
-        reps: "10",
-        set: "5",
-        distance: "N/A",
-        duration: "30 mins",
-        notes:
-          "Loved today's workout! Can't wait to get back into the gym and get back at it",
-        time: Date(),
-      },
-    ],
+    newEntry: {},
+    entries: [],
   }),
   components: {
     NotebookEntry,
     NotebookNewEntry,
   },
-};
+  methods: {
+    addEntry() {
+      this.entries.unshift(this.newEntry);
+      this.newEntry = {};
+    },
+  },
+});
 </script>
 
 <style></style>

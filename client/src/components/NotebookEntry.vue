@@ -1,35 +1,33 @@
 <template>
   <div class="card">
     <header class="card-header">
-      <p class="card-header-title">
-        <time :datetime="post.time">{{ post.time }}</time>
-      </p>
+      <p class="card-header-title"></p>
     </header>
     <div class="card-content">
       <div class="content">
         <label class="label mt-1">Exercise</label>
         <div class="content">
-          {{ post.exercise }}
+          {{ entry.exercise }}
         </div>
         <label class="label mt-1">Reps</label>
         <div class="content">
-          {{ post.reps }}
+          {{ entry.reps }}
         </div>
         <label class="label mt-1">Sets</label>
         <div class="content">
-          {{ post.sets }}
+          {{ entry.sets }}
         </div>
         <label class="label mt-1">Distance</label>
         <div class="content">
-          {{ post.distance }}
+          {{ entry.distance }}
         </div>
         <label class="label mt-1">Duration</label>
         <div class="content">
-          {{ post.duration }}
+          {{ entry.duration }}
         </div>
         <label class="label mt-1">Notes</label>
         <div class="content">
-          {{ post.notes }}
+          {{ entry.notes }}
         </div>
       </div>
     </div>
@@ -44,7 +42,7 @@
 <script>
 export default {
   props: {
-    post: Object,
+    entry: Object,
   },
 };
 </script>
