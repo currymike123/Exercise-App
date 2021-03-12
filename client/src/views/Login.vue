@@ -36,7 +36,13 @@
 </template>
 
 <script>
-export default {};
+//import Session, { Login, Logout } from "../models/Session";
+
+export default {
+  props: {
+    loginInfo: Object,
+  },
+};
 </script>
 
 <style scoped></style>
