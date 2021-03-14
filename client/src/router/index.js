@@ -105,4 +105,8 @@ const router = new VueRouter({
   routes,
 });
 
+//router.beforeEach((to, from, next) => {
+//Put code to restrict pages on reload
+//});
+
 export default router;

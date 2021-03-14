@@ -1,7 +1,11 @@
 <template>
   <div class="card">
     <form @submit.prevent="$emit('add')">
-      <header class="card-header"></header>
+      <header class="card-header">
+        <p class="card-header-title">
+          <time :datetime="newEntry.time">{{ newEntry.time }}</time>
+        </p>
+      </header>
       <div class="card-content">
         <div class="content">
           <label class="label mt-1">Exercise</label>
