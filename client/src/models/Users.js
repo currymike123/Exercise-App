@@ -1,9 +1,9 @@
 const users = [];
 
-export function setUser(user) {
+export function setUsers(user) {
   users.unshift(user);
 }
 
-export function getUser() {
+export function getUsers() {
   return users;
 }

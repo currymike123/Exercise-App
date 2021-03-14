@@ -1,14 +1,18 @@
 /* User session information */
 
 const Session = {
-  user: null,
+  user: {},
   message: [],
 };
 
 export default Session;
 
-export function Login() {
-  Session.user = {};
+export function setUser(user) {
+  Session.user = user;
+}
+
+export function getUser() {
+  return Session.user;
 }
 
 export function Logout() {

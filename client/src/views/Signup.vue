@@ -69,8 +69,8 @@
 </template>
 
 <script>
-import { setUser } from "../models/Users";
-import { getUser } from "../models/Users";
+import { setUsers } from "../models/Users";
+import { getUsers } from "../models/Users";
 
 export default {
   data: () => ({
@@ -83,6 +83,7 @@ export default {
     hasSucess: false,
   }),
   methods: {
+    //Check to see if the passwords match.
     checkForm() {
       if (this.user.password == this.user.verifyPassword) {
         this.hasDanger = false;
@@ -92,11 +93,12 @@ export default {
         this.hasSucess = false;
       }
     },
+    //If the passwords match and they enetered information add user.
     submitForm() {
       if (this.hasSucess == true) {
         if (this.user.email != null && this.user.password != null) {
-          setUser(this.user);
-          let list = getUser();
+          setUsers(this.user);
+          let list = getUsers();
           console.log(list);
         }
       }
