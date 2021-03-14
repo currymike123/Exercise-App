@@ -10,9 +10,16 @@
         </h1>
       </div>
       <div class="column m-6 pt-6">
-        This is the write up about the app and all the wonderful things it does
-        to keep you fit and strong. Here I'll put links and other descriptions
-        of the app.
+        Will tracks your daily exercise routine and matches you up against your
+        friends. If you are new
+        <router-link to="/signup" class="is-success is-small">
+          <strong>Sign up</strong>
+        </router-link>
+        or if you are a returning user please
+        <router-link to="/login" class="is-success is-small">
+          <strong>Log in</strong>
+        </router-link>
+        .
       </div>
     </div>
   </div>

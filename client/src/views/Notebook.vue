@@ -14,10 +14,17 @@
       </div>
       <div class="column page-offset">
         <notebook-new-entry :newEntry="newEntry" @add="addEntry" />
+        <div class="content-item mb-4" v-for="(entry, i) in entries" :key="i">
+          <div v-if="displayEntries(i) == true">
+            <NotebookEntry :entry="entry" @delete="deleteEntry(i)" />
+          </div>
+        </div>
       </div>
       <div class="column page-offset">
-        <div class="content-item" v-for="(entry, i) in entries" :key="i">
-          <NotebookEntry :entry="entry" />
+        <div class="content-item mb-4" v-for="(entry, i) in entries" :key="i">
+          <div v-if="displayEntries(i) == false">
+            <NotebookEntry :entry="entry" @delete="deleteEntry(i)" />
+          </div>
         </div>
       </div>
     </div>
@@ -42,6 +49,16 @@ export default Vue.extend({
     addEntry() {
       this.entries.unshift(this.newEntry);
       this.newEntry = {};
+    },
+    deleteEntry(i) {
+      this.entries.splice(i, 1);
+    },
+    displayEntries(i) {
+      if (i % 2 == 0) {
+        return false;
+      } else {
+        return true;
+      }
     },
   },
 });

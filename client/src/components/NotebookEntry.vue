@@ -31,10 +31,19 @@
         </div>
       </div>
     </div>
-    <footer class="card-footer">
-      <a href="#" class="card-footer-item">Save</a>
-      <a href="#" class="card-footer-item">Edit</a>
-      <a href="#" class="card-footer-item">Delete</a>
+    <footer class="card-footer level">
+      <div class="field is-grouped">
+        <div class="level-left m-4 ml-5">
+          <div class="control">
+            <button
+              class="button is-medium is-primary is-outlined"
+              @click.prevent="$emit('delete')"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
     </footer>
   </div>
 </template>

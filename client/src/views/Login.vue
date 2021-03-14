@@ -81,6 +81,10 @@ export default {
       //Check if the user exists and if they do log them in.
       console.log("running");
 
+      if (this.usersLog.length == 0) {
+        this.msg = "There are no users.  Please Sign up first.";
+      }
+
       for (let i = 0; i < this.usersLog.length; i++) {
         if (this.email == this.usersLog[i].email) {
           this.exists = true;

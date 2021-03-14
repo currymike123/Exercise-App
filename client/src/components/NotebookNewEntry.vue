@@ -43,24 +43,9 @@
               </button>
             </div>
           </div>
-          <div class="level-item ml-6 mr-6 mt-4 mb-4">
-            <div class="control">
-              <button class="button is-medium is-primary is-outlined">
-                Edit
-              </button>
-            </div>
-          </div>
-          <div class="level-right m-4 mr-5">
-            <div class="control">
-              <button class="button is-medium is-primary is-outlined">
-                Delete
-              </button>
-            </div>
-          </div>
         </div>
       </footer>
     </form>
-    <pre>      {{ newEntry }}</pre>
   </div>
 </template>
 

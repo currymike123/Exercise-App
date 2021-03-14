@@ -28,6 +28,7 @@ export default {
   methods: {
     sesLogout() {
       logout();
+      this.$router.push("/");
     },
   },
 };
