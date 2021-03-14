@@ -90,6 +90,7 @@ export default {
 
             setUser(this.usersLog[i]);
             console.log(getUser());
+            this.$router.push("Admin");
           } else {
             this.msg = "incorrect password";
             this.emailHasDanger = false;

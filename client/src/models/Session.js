@@ -1,7 +1,7 @@
 /* User session information */
 
 const Session = {
-  user: {},
+  user: null,
   message: [],
 };
 
@@ -15,6 +15,6 @@ export function getUser() {
   return Session.user;
 }
 
-export function Logout() {
+export function logout() {
   Session.user = null;
 }

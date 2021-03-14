@@ -48,19 +48,9 @@
           </div>
         </div>
       </div>
-
       <div class="navbar-end">
         <div class="navbar-item">
-          <router-link to="/admin" class="navbar-item">admin</router-link>
-          <div class="buttons">
-            <router-link to="/signup" class="button is-success is-small">
-              <strong>Sign up</strong>
-            </router-link>
-
-            <router-link to="/login" class="button is-success is-small">
-              Log in
-            </router-link>
-          </div>
+          <login-badge />
         </div>
       </div>
     </div>
@@ -68,9 +58,13 @@
 </template>
 
 <script>
-//import { getUser } from "../models/Session";
+import LoginBadge from "./LoginBadge";
 
-export default {};
+export default {
+  components: {
+    LoginBadge,
+  },
+};
 </script>
 
 <style></style>
