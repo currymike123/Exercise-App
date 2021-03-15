@@ -53,21 +53,27 @@ export default Vue.extend({
   },
   mounted() {
     //Update the current user and get entries.
-    let currentUser = getUser();
-    this.user = currentUser;
-    this.newEntry.user = currentUser;
-    this.entries = getEntries(currentUser);
+
+    this.user = getUser();
+    this.newEntry.user = this.user;
+    this.entries = getEntries(this.user);
   },
   methods: {
     addEntry() {
-      //Add stored version
+      //Add entery to Enteries.js
       setEntries(this.newEntry);
+      //Reset newEntry
       this.newEntry = { user: {} };
+      //Add the current user into newEntry
       this.newEntry.user = this.user;
+      //Get the new set of Entries
+      this.entries = getEntries(this.user);
     },
     deleteEntry(i) {
       //Remove stored version
       deleteEntries(i);
+      //Get the new set of Entries
+      this.entries = getEntries(this.user);
     },
     displayEntries(i) {
       //Split between two columns

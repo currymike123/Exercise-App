@@ -1,20 +1,18 @@
+//Array of all users entries
 const entries = [];
 
 export default entries;
 
 export function getEntries(currentUser) {
-  const userEntries = [];
+  //Array of the current users entries
+  let userEntries = [];
   for (let i = 0; i < entries.length; i++) {
     if (currentUser.email == entries[i].user.email) {
       userEntries.push(entries[i]);
     }
   }
-  //console.log(entries);
-  console.log("This is my current user");
-  console.log(currentUser);
-  console.log("All the user entries");
-  console.log(userEntries);
-  return entries;
+
+  return userEntries;
 }
 
 export function setEntries(entry) {
