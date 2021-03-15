@@ -43,6 +43,12 @@ export default Vue.extend({
   data: () => ({
     newEntry: {
       user: {},
+      exercise: "",
+      reps: "",
+      sets: "",
+      distance: "",
+      duration: "",
+      notes: "",
     },
     entries: [],
     user: {},
@@ -63,7 +69,15 @@ export default Vue.extend({
       //Add entery to Enteries.js
       setEntries(this.newEntry);
       //Reset newEntry
-      this.newEntry = { user: {} };
+      this.newEntry = {
+        user: {},
+        exercise: "",
+        reps: "",
+        sets: "",
+        distance: "",
+        duration: "",
+        notes: "",
+      };
       //Add the current user into newEntry
       this.newEntry.user = this.user;
       //Get the new set of Entries
