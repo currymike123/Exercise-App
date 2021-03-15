@@ -57,7 +57,8 @@ import Vue from "vue";
 import FriendBlock from "../components/FriendBlock";
 import FriendPost from "../components/FriendPost";
 import { getAllEntries } from "../models/Entries";
-import { getUsers } from "../models/Users";
+import { getUsers, updateUsers } from "../models/Users";
+import { getUser } from "../models/Session";
 
 export default Vue.extend({
   //
@@ -67,14 +68,19 @@ export default Vue.extend({
     searchedUsers: [],
     search: null,
     onSearch: true,
+    currentUser: {},
   }),
   components: {
     FriendPost,
     FriendBlock,
   },
   mounted() {
+    //Get all the entries for the feed
     this.posts = getAllEntries();
+    //Get all the users for search
     this.users = getUsers();
+    //Get the current user to add friends
+    this.currentUser = getUser();
   },
   methods: {
     //
@@ -89,8 +95,18 @@ export default Vue.extend({
         return true;
       }
     },
-    addFriend() {},
-    deleteFriend() {},
+    addFriend(name) {
+      this.currentUser.friends = [];
+      this.currentUser.friends.push(name);
+      updateUsers(this.currentUser);
+    },
+    deleteFriend(name) {
+      for (let i = 0; i < this.currentUser.friends.length; i++) {
+        if (name == this.currentUser.friends[i]) {
+          this.currentUser.friends.splice(i, 1);
+        }
+      }
+    },
     findUsers() {
       //Clear users
       this.searchedUsers = [];

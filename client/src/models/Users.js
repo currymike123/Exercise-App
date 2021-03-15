@@ -9,3 +9,11 @@ export function setUsers(user) {
 export function getUsers() {
   return users;
 }
+
+export function updateUsers(user) {
+  for (let i = 0; i < users.length; i++) {
+    if (user.email == users[i].email) {
+      users[i] = user;
+    }
+  }
+}
