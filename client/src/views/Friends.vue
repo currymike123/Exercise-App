@@ -97,7 +97,7 @@ export default Vue.extend({
       //If the search matches user's name or email
       for (let i = 0; i < this.users.length; i++) {
         if (
-          this.users[i].name == this.search ||
+          this.users[i].name.toUpperCase() == this.search.toUpperCase() ||
           this.users[i].email == this.search
         ) {
           this.searchedUsers.push(this.users[i]);
