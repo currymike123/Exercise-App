@@ -22,3 +22,7 @@ export function setEntries(entry) {
 export function deleteEntries(index) {
   entries.splice(index, 1);
 }
+
+export function getAllEntries() {
+  return entries;
+}

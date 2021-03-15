@@ -1,7 +1,33 @@
-<template> </template>
+<template>
+  <article class="panel is-success mt-6">
+    <p class="panel-tabs">
+      <a>Search</a>
+      <a>Friends</a>
+    </p>
+    <div class="panel-block">
+      <p class="control has-icons-left">
+        <input class="input is-success" type="text" placeholder="Search" />
+        <span class="icon is-left">
+          <i class="fas fa-search" aria-hidden="true"></i>
+        </span>
+      </p>
+    </div>
+
+    <FriendBlock />
+  </article>
+</template>
 
 <script>
-export default {};
+import FriendBlock from "../components/FriendBlock";
+export default {
+  data: () => ({
+    //What to list
+    currentList: "Search",
+  }),
+  components: {
+    FriendBlock,
+  },
+};
 </script>
 
 <style></style>

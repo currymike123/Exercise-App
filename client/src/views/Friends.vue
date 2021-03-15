@@ -7,65 +7,56 @@
             Friends
           </p>
         </aside>
-
-        <article class="panel is-success mt-6">
-          <p class="panel-tabs">
-            <a>Search</a>
-            <a>Friends</a>
-            <a>Suggest</a>
-          </p>
-          <div class="panel-block">
-            <p class="control has-icons-left">
-              <input
-                class="input is-success"
-                type="text"
-                placeholder="Search"
-              />
-              <span class="icon is-left">
-                <i class="fas fa-search" aria-hidden="true"></i>
-              </span>
-            </p>
+        <FriendSearch />
+      </div>
+      <div class="column page-offset">
+        <div v-for="(post, i) in posts" :key="i">
+          <div v-if="displayPosts(i) == false">
+            <FriendPost :post="post" />
           </div>
-
-          <a class="panel-block">
-            <figure class="image is-48x48">
-              <img
-                src="https://www.randomlists.com/img/people/ray_romano.webp"
-                alt="Placeholder image"
-              />
-            </figure>
-            <div class="ml-3">John Smith</div>
-          </a>
-          <a class="panel-block">
-            <figure class="image is-48x48">
-              <img
-                src="https://www.randomlists.com/img/people/courteney_cox.webp"
-                alt="Placeholder image"
-              />
-            </figure>
-            <div class="ml-3">Jane Doe</div>
-            <a href="#" class="card-footer-item">Friend</a>
-            <a href="#" class="card-footer-item">UnFriend</a>
-          </a>
-        </article>
+        </div>
       </div>
       <div class="column page-offset">
-        <FriendPost />
-      </div>
-      <div class="column page-offset">
-        <FriendPost />
+        <div v-for="(post, i) in posts" :key="i">
+          <div v-if="displayPosts(i) == true">
+            <FriendPost :post="post" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Vue from "vue";
 import FriendPost from "../components/FriendPost";
-export default {
+import FriendSearch from "../components/FriendSearch";
+import { getAllEntries } from "../models/Entries";
+
+export default Vue.extend({
+  //
+  data: () => ({
+    posts: [],
+  }),
   components: {
     FriendPost,
+    FriendSearch,
   },
-};
+  mounted() {
+    this.posts = getAllEntries();
+    console.log(this.posts);
+  },
+  methods: {
+    displayPosts(i) {
+      //Split between two columns
+      if (i % 2 == 0) {
+        return false;
+      } else {
+        return true;
+      }
+    },
+  },
+});
 </script>
 
 <style>

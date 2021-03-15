@@ -19,7 +19,7 @@
           </figure>
         </div>
         <div class="media-content">
-          <p class="title is-4">John Smith</p>
+          <p class="title is-4">{{ carInfo.name }}</p>
           <p class="subtitle is-6">@johnsmith</p>
         </div>
       </div>
@@ -36,7 +36,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    cardInfo: Object,
+  },
+};
 </script>
 
 <style></style>

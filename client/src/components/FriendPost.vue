@@ -11,8 +11,7 @@
           </figure>
         </div>
         <div class="media-content">
-          <p class="title is-4">John Smith</p>
-          <p class="subtitle is-6">@johnsmith</p>
+          <p class="title is-4">{{ post.user.name }}</p>
         </div>
       </div>
       <div class="level-right pr-3"></div>
@@ -21,27 +20,27 @@
       <div class="content">
         <label class="label mt-1">Exercise</label>
         <div class="content">
-          100 lb lift
+          {{ post.exercise }}
         </div>
         <label class="label mt-1">Reps</label>
         <div class="content">
-          5
+          {{ post.reps }}
         </div>
         <label class="label mt-1">Sets</label>
         <div class="content">
-          10
+          {{ post.sets }}
         </div>
         <label class="label mt-1">Distance</label>
         <div class="content">
-          5 miles
+          {{ post.distance }}
         </div>
         <label class="label mt-1">Duration</label>
         <div class="content">
-          30 mins.
+          {{ post.duration }}
         </div>
         <label class="label mt-1">Notes</label>
         <div class="content">
-          Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros.
+          {{ post.notes }}
         </div>
       </div>
     </div>
@@ -49,7 +48,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    post: Object,
+  },
+};
 </script>
 
 <style></style>
