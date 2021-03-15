@@ -19,13 +19,14 @@
                 type="text"
                 placeholder="Search"
                 v-model="search"
+                v-on:input="findUsers"
               />
               <span class="icon is-left">
                 <i class="fas fa-search" aria-hidden="true"></i>
               </span>
             </p>
           </div>
-          <div v-for="(friends, i) in users" :key="i">
+          <div v-for="(friends, i) in searchedUsers" :key="i">
             <FriendBlock :friends="friends" />
           </div>
         </article>
@@ -61,6 +62,7 @@ export default Vue.extend({
   data: () => ({
     posts: [],
     users: [],
+    searchedUsers: [],
     search: null,
   }),
   components: {
@@ -70,8 +72,6 @@ export default Vue.extend({
   mounted() {
     this.posts = getAllEntries();
     this.users = getUsers();
-    console.log(this.posts);
-    console.log(this.users);
   },
   methods: {
     displayPosts(i) {
@@ -80,6 +80,19 @@ export default Vue.extend({
         return false;
       } else {
         return true;
+      }
+    },
+    findUsers() {
+      //Clear users
+      this.searchedUsers = [];
+      //If the search matches user's name or email
+      for (let i = 0; i < this.users.length; i++) {
+        if (
+          this.users[i].name == this.search ||
+          this.users[i].email == this.search
+        ) {
+          this.searchedUsers.push(this.users[i]);
+        }
       }
     },
   },
