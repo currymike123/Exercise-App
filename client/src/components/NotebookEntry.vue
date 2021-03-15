@@ -26,7 +26,7 @@
           {{ entry.duration }}
         </div>
         <label class="label mt-1">Notes</label>
-        <div class="content mb-4">
+        <div class="content">
           {{ entry.notes }}
         </div>
       </div>

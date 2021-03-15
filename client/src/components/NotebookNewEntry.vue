@@ -2,9 +2,7 @@
   <div class="card">
     <form @submit.prevent="$emit('add')">
       <header class="card-header">
-        <p class="card-header-title">
-          <time :datetime="newEntry.time">{{ newEntry.time }}</time>
-        </p>
+        <p class="card-header-title"></p>
       </header>
       <div class="card-content">
         <div class="content">
@@ -30,11 +28,7 @@
           </div>
           <label class="label mt-1">Notes</label>
           <div class="control">
-            <input
-              class="input is-large"
-              type="text"
-              v-model="newEntry.notes"
-            />
+            <input class="input" type="text" v-model="newEntry.notes" />
           </div>
         </div>
       </div>

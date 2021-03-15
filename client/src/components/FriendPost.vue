@@ -15,9 +15,7 @@
           <p class="subtitle is-6">@johnsmith</p>
         </div>
       </div>
-      <div class="level-right pr-3">
-        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016 </time>
-      </div>
+      <div class="level-right pr-3"></div>
     </header>
     <div class="card-content">
       <div class="content">
