@@ -6,7 +6,12 @@
     </p>
     <div class="panel-block">
       <p class="control has-icons-left">
-        <input class="input is-success" type="text" placeholder="Search" />
+        <input
+          class="input is-success"
+          type="text"
+          placeholder="Search"
+          v-model="search"
+        />
         <span class="icon is-left">
           <i class="fas fa-search" aria-hidden="true"></i>
         </span>
@@ -23,6 +28,7 @@ export default {
   data: () => ({
     //What to list
     currentList: "Search",
+    search: null,
   }),
   components: {
     FriendBlock,

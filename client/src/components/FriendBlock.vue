@@ -6,14 +6,18 @@
         alt="Placeholder image"
       />
     </figure>
-    <div class="ml-3">Jane Doe</div>
+    <div class="ml-3">{{ friends.name }}</div>
     <a href="#" class="card-footer-item">Friend</a>
     <a href="#" class="card-footer-item">UnFriend</a>
   </a>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    friends: Object,
+  },
+};
 </script>
 
 <style></style>

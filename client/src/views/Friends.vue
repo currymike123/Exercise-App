@@ -7,7 +7,28 @@
             Friends
           </p>
         </aside>
-        <FriendSearch />
+        <article class="panel is-success mt-6">
+          <p class="panel-tabs">
+            <a>Search</a>
+            <a>Friends</a>
+          </p>
+          <div class="panel-block">
+            <p class="control has-icons-left">
+              <input
+                class="input is-success"
+                type="text"
+                placeholder="Search"
+                v-model="search"
+              />
+              <span class="icon is-left">
+                <i class="fas fa-search" aria-hidden="true"></i>
+              </span>
+            </p>
+          </div>
+          <div v-for="(friends, i) in users" :key="i">
+            <FriendBlock :friends="friends" />
+          </div>
+        </article>
       </div>
       <div class="column page-offset">
         <div v-for="(post, i) in posts" :key="i">
@@ -28,23 +49,29 @@
 </template>
 
 <script>
+//
 import Vue from "vue";
+import FriendBlock from "../components/FriendBlock";
 import FriendPost from "../components/FriendPost";
-import FriendSearch from "../components/FriendSearch";
 import { getAllEntries } from "../models/Entries";
+import { getUsers } from "../models/Users";
 
 export default Vue.extend({
   //
   data: () => ({
     posts: [],
+    users: [],
+    search: null,
   }),
   components: {
     FriendPost,
-    FriendSearch,
+    FriendBlock,
   },
   mounted() {
     this.posts = getAllEntries();
+    this.users = getUsers();
     console.log(this.posts);
+    console.log(this.users);
   },
   methods: {
     displayPosts(i) {
