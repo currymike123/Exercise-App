@@ -17,8 +17,6 @@ export function getEntries(currentUser) {
 
 export function setEntries(entry) {
   entries.unshift(entry);
-  console.log("From within Entries");
-  console.log(entry);
 }
 
 export function deleteEntries(index) {

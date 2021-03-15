@@ -8,6 +8,19 @@
             <p class="control has-icons-left">
               <input
                 class="input"
+                v-model="user.name"
+                type="text"
+                placeholder="name"
+              />
+              <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control has-icons-left">
+              <input
+                class="input"
                 v-model="user.email"
                 type="email"
                 placeholder="Email"
@@ -61,7 +74,6 @@
             </p>
           </div>
         </form>
-        <pre> {{ user }} </pre>
       </div>
       <div class="column"></div>
     </div>
@@ -76,6 +88,7 @@ import { setUser } from "../models/Session";
 export default {
   data: () => ({
     user: {
+      name: null,
       email: null,
       password: null,
       verifyPassword: null,
