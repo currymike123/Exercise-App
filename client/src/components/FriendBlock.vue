@@ -7,8 +7,10 @@
       />
     </figure>
     <div class="ml-3">{{ friends.name }}</div>
-    <a href="#" class="card-footer-item">Friend</a>
-    <a href="#" class="card-footer-item">UnFriend</a>
+    <a class="card-footer-item" @click.prevent="$emit('addFriend')">Friend</a>
+    <a class="card-footer-item" @click.prevent="$emit('deleteFriend')"
+      >UnFriend</a
+    >
   </a>
 </template>
 
@@ -17,6 +19,7 @@ export default {
   props: {
     friends: Object,
   },
+  methods: {},
 };
 </script>
 

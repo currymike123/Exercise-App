@@ -89,6 +89,8 @@ export default Vue.extend({
         return true;
       }
     },
+    addFriend() {},
+    deleteFriend() {},
     findUsers() {
       //Clear users
       this.searchedUsers = [];
