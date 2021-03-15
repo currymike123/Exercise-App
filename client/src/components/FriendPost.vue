@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card mt-2">
     <header class="card-header level">
       <div class="media pl-3 pt-3">
         <div class="media-left">
