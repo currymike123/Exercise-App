@@ -9,15 +9,14 @@
         </aside>
         <article class="panel is-success mt-6">
           <p class="panel-tabs">
-            <a>Search</a>
-            <a>Friends</a>
+            <a v-on:click="searchActive(true)">Search</a>
+            <a v-on:click="searchActive(false)">Friends</a>
           </p>
           <div class="panel-block">
             <p class="control has-icons-left">
               <input
                 class="input is-success"
                 type="text"
-                placeholder="Search"
                 v-model="search"
                 v-on:input="findUsers"
               />
@@ -26,9 +25,12 @@
               </span>
             </p>
           </div>
-          <div v-for="(friends, i) in searchedUsers" :key="i">
-            <FriendBlock :friends="friends" />
+          <div v-if="searchActive">
+            <div v-for="(friends, i) in searchedUsers" :key="i">
+              <FriendBlock :friends="friends" />
+            </div>
           </div>
+          <div v-else></div>
         </article>
       </div>
       <div class="column page-offset">
@@ -64,6 +66,7 @@ export default Vue.extend({
     users: [],
     searchedUsers: [],
     search: null,
+    onSearch: true,
   }),
   components: {
     FriendPost,
@@ -74,6 +77,10 @@ export default Vue.extend({
     this.users = getUsers();
   },
   methods: {
+    //
+    searchActive(onSearch) {
+      this.onSearch = onSearch;
+    },
     displayPosts(i) {
       //Split between two columns
       if (i % 2 == 0) {
