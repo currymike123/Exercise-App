@@ -25,7 +25,7 @@
               </span>
             </p>
           </div>
-          <div v-if="searchActive">
+          <div v-if="onSearch">
             <div v-for="(friends, i) in searchedUsers" :key="i">
               <FriendBlock
                 :friends="friends"
@@ -34,7 +34,15 @@
               />
             </div>
           </div>
-          <div v-else></div>
+          <div v-else>
+            <div v-for="(friends, i) in searchedUsers" :key="i">
+              <FriendList
+                :friends="friends"
+                @addFriend="addFriend(searchedUsers[i])"
+                @deleteFriend="deleteFriend(searchedUsers[i])"
+              />
+            </div>
+          </div>
         </article>
       </div>
       <div class="column page-offset">
@@ -63,6 +71,7 @@
 //
 import Vue from "vue";
 import FriendBlock from "../components/FriendBlock";
+import FriendList from "../components/FriendList";
 import FriendPost from "../components/FriendPost";
 import { getAllEntries } from "../models/Entries";
 import { getUsers, updateUsers } from "../models/Users";
@@ -80,6 +89,7 @@ export default Vue.extend({
   components: {
     FriendPost,
     FriendBlock,
+    FriendList,
   },
   mounted() {
     //Get all the entries for the feed
@@ -93,6 +103,7 @@ export default Vue.extend({
     //
     searchActive(onSearch) {
       this.onSearch = onSearch;
+      this.$forceUpdate();
     },
     onFriendsList(curPost) {
       //If you aren't my friend I don't want to see your post.
