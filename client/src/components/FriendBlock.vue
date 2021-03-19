@@ -7,14 +7,8 @@
       />
     </figure>
     <div class="ml-3">{{ friends.name }}</div>
-    <a
-      class="card-footer-item"
-      @click.prevent="$emit('addFriend(friends.name)')"
-      >Friend</a
-    >
-    <a
-      class="card-footer-item"
-      @click.prevent="$emit('deleteFriend(friends.name)')"
+    <a class="card-footer-item" @click.prevent="$emit('addFriend')">Friend</a>
+    <a class="card-footer-item" @click.prevent="$emit('deleteFriend')"
       >UnFriend</a
     >
   </a>
@@ -25,6 +19,7 @@ export default {
   props: {
     friends: Object,
   },
+
   methods: {},
 };
 </script>

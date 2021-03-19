@@ -58,7 +58,7 @@
                 }"
                 v-on:input="checkForm"
                 v-model="user.verifyPassword"
-                type="verifypassword"
+                type="password"
                 placeholder="VerifyPassword"
               />
               <span class="icon is-small is-left">

@@ -27,7 +27,10 @@
           </div>
           <div v-if="searchActive">
             <div v-for="(friends, i) in searchedUsers" :key="i">
-              <FriendBlock :friends="friends" />
+              <FriendBlock
+                :friends="friends"
+                @addFriend="addFriend(searchedUsers[i])"
+              />
             </div>
           </div>
           <div v-else></div>
@@ -59,7 +62,6 @@ import FriendPost from "../components/FriendPost";
 import { getAllEntries } from "../models/Entries";
 import { getUsers, updateUsers } from "../models/Users";
 import { getUser } from "../models/Session";
-
 export default Vue.extend({
   //
   data: () => ({
@@ -96,9 +98,29 @@ export default Vue.extend({
       }
     },
     addFriend(name) {
-      this.currentUser.friends = [];
-      this.currentUser.friends.push(name);
-      updateUsers(this.currentUser);
+      //If there is no friends field in CurrentUser add it and add friend to it.
+      if (!this.currentUser.friends) {
+        console.log("Running");
+        this.currentUser.friends = [];
+        this.currentUser.friends.push(name.email);
+        console.log(this.currentUser.friends);
+        updateUsers(this.currentUser);
+      }
+
+      // Check to see if the friend is already on list.  If not add them.
+      let skip = false;
+      for (let i = 0; i < this.currentUser.friends.length; i++) {
+        if (name.email == this.currentUser.friends[i]) {
+          skip = true;
+        }
+      }
+      if (!skip) {
+        this.currentUser.friends.push(name.email);
+        updateUsers(this.currentUser);
+        console.log("Added user");
+      }
+      console.log("All Friends");
+      console.log(this.currentUser.friends);
     },
     deleteFriend(name) {
       for (let i = 0; i < this.currentUser.friends.length; i++) {
