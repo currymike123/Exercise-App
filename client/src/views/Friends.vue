@@ -30,6 +30,7 @@
               <FriendBlock
                 :friends="friends"
                 @addFriend="addFriend(searchedUsers[i])"
+                @deleteFriend="deleteFriend(searchedUsers[i])"
               />
             </div>
           </div>
@@ -38,15 +39,19 @@
       </div>
       <div class="column page-offset">
         <div v-for="(post, i) in posts" :key="i">
-          <div v-if="displayPosts(posts[i], i) == false">
-            <FriendPost :post="post" />
+          <div v-if="onFriendsList(posts[i]) == true">
+            <div v-if="displayPosts(i) == false">
+              <FriendPost :post="post" />
+            </div>
           </div>
         </div>
       </div>
       <div class="column page-offset">
         <div v-for="(post, i) in posts" :key="i">
-          <div v-if="displayPosts(posts[i], i) == true">
-            <FriendPost :post="post" />
+          <div v-if="onFriendsList(posts[i]) == true">
+            <div v-if="displayPosts(i) == true">
+              <FriendPost :post="post" />
+            </div>
           </div>
         </div>
       </div>
@@ -89,10 +94,18 @@ export default Vue.extend({
     searchActive(onSearch) {
       this.onSearch = onSearch;
     },
-    displayPosts(curPost, i) {
-      if (this.currentUser.friends.includs(curPost.user.email)) {
-        //Check to see if the post is one of my friends
+    onFriendsList(curPost) {
+      if (!this.currentUser.friends) {
+        return false;
       }
+      //If you are on my friends list show you posts.
+      if (this.currentUser.friends.includes(curPost.user.email)) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    displayPosts(i) {
       //Split between two columns
 
       if (i % 2 == 0) {
@@ -107,6 +120,7 @@ export default Vue.extend({
         this.currentUser.friends = [];
         this.currentUser.friends.push(name.email);
         updateUsers(this.currentUser);
+        this.currentUser = getUser();
         console.log("First Friends");
       }
 
@@ -114,12 +128,15 @@ export default Vue.extend({
       if (!this.currentUser.friends.includes(name.email)) {
         this.currentUser.friends.push(name.email);
         updateUsers(this.currentUser);
+        this.currentUser = getUser();
       }
     },
     deleteFriend(name) {
       for (let i = 0; i < this.currentUser.friends.length; i++) {
-        if (name == this.currentUser.friends[i]) {
+        if (name.email == this.currentUser.friends[i]) {
           this.currentUser.friends.splice(i, 1);
+          updateUsers(this.currentUser);
+          this.currentUser = getUser();
         }
       }
     },
