@@ -130,6 +130,8 @@ export default Vue.extend({
         updateUsers(this.currentUser);
         this.currentUser = getUser();
       }
+      //Update the posts
+      this.$forceUpdate();
     },
     deleteFriend(name) {
       for (let i = 0; i < this.currentUser.friends.length; i++) {
@@ -139,6 +141,8 @@ export default Vue.extend({
           this.currentUser = getUser();
         }
       }
+      //Update the posts
+      this.$forceUpdate();
     },
     findUsers() {
       //Clear users
