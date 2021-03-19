@@ -38,14 +38,14 @@
       </div>
       <div class="column page-offset">
         <div v-for="(post, i) in posts" :key="i">
-          <div v-if="displayPosts(i) == false">
+          <div v-if="displayPosts(posts[i], i) == false">
             <FriendPost :post="post" />
           </div>
         </div>
       </div>
       <div class="column page-offset">
         <div v-for="(post, i) in posts" :key="i">
-          <div v-if="displayPosts(i) == true">
+          <div v-if="displayPosts(posts[i], i) == true">
             <FriendPost :post="post" />
           </div>
         </div>
@@ -89,8 +89,9 @@ export default Vue.extend({
     searchActive(onSearch) {
       this.onSearch = onSearch;
     },
-    displayPosts(i) {
+    displayPosts(curPost, i) {
       //Split between two columns
+
       if (i % 2 == 0) {
         return false;
       } else {
@@ -100,27 +101,17 @@ export default Vue.extend({
     addFriend(name) {
       //If there is no friends field in CurrentUser add it and add friend to it.
       if (!this.currentUser.friends) {
-        console.log("Running");
         this.currentUser.friends = [];
         this.currentUser.friends.push(name.email);
-        console.log(this.currentUser.friends);
         updateUsers(this.currentUser);
+        console.log("First Friends");
       }
 
       // Check to see if the friend is already on list.  If not add them.
-      let skip = false;
-      for (let i = 0; i < this.currentUser.friends.length; i++) {
-        if (name.email == this.currentUser.friends[i]) {
-          skip = true;
-        }
-      }
-      if (!skip) {
+      if (!this.currentUser.friends.includes(name.email)) {
         this.currentUser.friends.push(name.email);
         updateUsers(this.currentUser);
-        console.log("Added user");
       }
-      console.log("All Friends");
-      console.log(this.currentUser.friends);
     },
     deleteFriend(name) {
       for (let i = 0; i < this.currentUser.friends.length; i++) {
