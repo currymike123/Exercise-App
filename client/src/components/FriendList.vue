@@ -17,7 +17,7 @@
 <script>
 export default {
   props: {
-    friends: Object,
+    friends: String,
   },
 
   methods: {},
