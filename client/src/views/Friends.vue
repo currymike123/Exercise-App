@@ -90,6 +90,9 @@ export default Vue.extend({
       this.onSearch = onSearch;
     },
     displayPosts(curPost, i) {
+      if (this.currentUser.friends.includs(curPost.user.email)) {
+        //Check to see if the post is one of my friends
+      }
       //Split between two columns
 
       if (i % 2 == 0) {
