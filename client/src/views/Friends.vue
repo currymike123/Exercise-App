@@ -9,8 +9,12 @@
         </aside>
         <article class="panel is-success mt-6">
           <p class="panel-tabs">
-            <a v-on:click="searchActive(true)">Search</a>
-            <a v-on:click="searchActive(false)">Friends</a>
+            <button class="button is-white" v-on:click="searchActive(true)">
+              Search
+            </button>
+            <button class="button is-white" v-on:click="searchActive(false)">
+              Friends
+            </button>
           </p>
           <div class="panel-block">
             <p class="control has-icons-left">
@@ -35,7 +39,7 @@
             </div>
           </div>
           <div v-else>
-            <div v-for="(friends, i) in searchedUsers" :key="i">
+            <div v-for="(friends, i) in this.currentUser.friends" :key="i">
               <FriendList
                 :friends="friends"
                 @addFriend="addFriend(searchedUsers[i])"
