@@ -95,10 +95,11 @@ export default Vue.extend({
       this.onSearch = onSearch;
     },
     onFriendsList(curPost) {
+      //If you aren't my friend I don't want to see your post.
       if (!this.currentUser.friends) {
         return false;
       }
-      //If you are on my friends list show you posts.
+      //If you are on my friends list show your posts.
       if (this.currentUser.friends.includes(curPost.user.email)) {
         return true;
       } else {
@@ -106,7 +107,7 @@ export default Vue.extend({
       }
     },
     displayPosts(i) {
-      //Split between two columns
+      //Split between two columns.
 
       if (i % 2 == 0) {
         return false;
@@ -147,7 +148,7 @@ export default Vue.extend({
     findUsers() {
       //Clear users
       this.searchedUsers = [];
-      //If the search matches user's name or email
+      //If the search matches user's name or email.  Search both upper and lower case.
       for (let i = 0; i < this.users.length; i++) {
         if (
           this.users[i].name.toUpperCase() == this.search.toUpperCase() ||
