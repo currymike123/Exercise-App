@@ -13,12 +13,7 @@
           <div class="field-body">
             <div class="field">
               <p class="control is-expanded">
-                <input class="input" type="text" placeholder="First" />
-              </p>
-            </div>
-            <div class="field">
-              <p class="control is-expanded">
-                <input class="input" type="text" placeholder="Last" />
+                <input class="input" type="text" placeholder="Name" />
               </p>
             </div>
           </div>
@@ -40,13 +35,13 @@
 
         <div class="field is-horizontal">
           <div class="field-label is-normal">
-            <label class="label">Phone</label>
+            <label class="label">Handle</label>
           </div>
           <div class="field-body">
             <div class="field is-expanded">
               <p class="control"></p>
               <p class="control is-expanded">
-                <input class="input" type="tel" placeholder="Phone" />
+                <input class="input" type="tel" placeholder="Handle" />
               </p>
             </div>
           </div>

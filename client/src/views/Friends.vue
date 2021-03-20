@@ -167,7 +167,8 @@ export default Vue.extend({
       for (let i = 0; i < this.users.length; i++) {
         if (
           this.users[i].name.toUpperCase() == this.search.toUpperCase() ||
-          this.users[i].email == this.search
+          this.users[i].email == this.search ||
+          this.users[i].handle == this.search
         ) {
           this.searchedUsers.push(this.users[i]);
         }

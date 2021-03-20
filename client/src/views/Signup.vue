@@ -34,6 +34,19 @@
             <p class="control has-icons-left">
               <input
                 class="input"
+                v-model="user.handle"
+                type="text"
+                placeholder="Handle"
+              />
+              <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control has-icons-left">
+              <input
+                class="input"
                 v-bind:class="{
                   'is-danger': hasDanger,
                   'is-sucess': hasSucess,
@@ -90,6 +103,7 @@ export default {
     user: {
       name: null,
       email: null,
+      handle: null,
       password: null,
       verifyPassword: null,
     },
