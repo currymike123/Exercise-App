@@ -13,7 +13,12 @@
           <div class="field-body">
             <div class="field">
               <p class="control is-expanded">
-                <input class="input" type="text" placeholder="Name" />
+                <input
+                  class="input"
+                  v-model="user.name"
+                  type="text"
+                  placeholder="Name"
+                />
               </p>
             </div>
           </div>
@@ -27,7 +32,12 @@
             <div class="field is-expanded">
               <p class="control"></p>
               <p class="control is-expanded">
-                <input class="input" type="tel" placeholder="Email" />
+                <input
+                  class="input"
+                  v-model="user.email"
+                  type="email"
+                  placeholder="Email"
+                />
               </p>
             </div>
           </div>
@@ -41,7 +51,12 @@
             <div class="field is-expanded">
               <p class="control"></p>
               <p class="control is-expanded">
-                <input class="input" type="tel" placeholder="Handle" />
+                <input
+                  class="input"
+                  v-model="user.handle"
+                  type="tel"
+                  placeholder="Handle"
+                />
               </p>
             </div>
           </div>
@@ -54,14 +69,20 @@
           <div class="field-body">
             <div class="field">
               <p class="control is-expanded">
-                <input class="input" type="text" placeholder="Password" />
+                <input
+                  class="input"
+                  v-model="user.password"
+                  type="password"
+                  placeholder="Password"
+                />
               </p>
             </div>
             <div class="field">
               <p class="control is-expanded">
                 <input
                   class="input"
-                  type="text"
+                  v-model="user.verifyPassword"
+                  type="password"
                   placeholder="Verify Password"
                 />
               </p>
@@ -77,7 +98,11 @@
             <div class="field is-expanded">
               <p class="control"></p>
               <p class="control is-expanded">
-                <textarea class="textarea" placeholder="Bio"></textarea>
+                <textarea
+                  class="textarea"
+                  v-model="user.bio"
+                  placeholder="Bio"
+                ></textarea>
               </p>
             </div>
           </div>
@@ -116,7 +141,7 @@
           <div class="field-body">
             <div class="field">
               <div class="control">
-                <button class="button is-primary">
+                <button class="button is-primary" v-on:click="update">
                   Update
                 </button>
               </div>
@@ -124,6 +149,7 @@
           </div>
         </div>
       </div>
+
       <div class="column"></div>
     </div>
   </div>
@@ -131,10 +157,24 @@
 
 <script>
 import AdminMenu from "@/components/AdminMenu";
+import { getSessionUser, updateUsers } from "../models/Users";
+import { getUser } from "../models/Session";
 
 export default {
+  data: () => ({
+    user: {},
+  }),
   components: {
     AdminMenu,
+  },
+  mounted() {
+    let currentUser = getUser();
+    this.user = getSessionUser(currentUser);
+  },
+  methods: {
+    update() {
+      updateUsers(this.user);
+    },
   },
 };
 </script>
