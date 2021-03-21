@@ -1,36 +1,26 @@
-/* Server Code */
-/*
-const express = require('express')
-const app = express()
-const port = 3000
+//New code from class
+
+const path = require("path");
+const express = require("express");
+
+const usersCtrl = require("./controllers/users");
+const postsCtrl = require("./controllers/posts");
+
+const app = express();
+const port = process.env.PORT || 3000;
 
 app
-    .get('/', (req, res) => {
-    res.send('Welcome to my excercise app!')
-    })
-    
-    })
+  .use(express.json())
+  .use(express.static("./docs"))
+
+  .use("/users", usersCtrl)
+  .use("/posts", postsCtrl)
+
+  // All the way at the end of the pipeline. Return instead of not found
+  .get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../docs/index.html"));
+  });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
-*/
-/*Updated server to connect to client */
-
-const express = require('express')
-const serveStatic = require('serve-static')
-const path = require('path')
-
-const app = express()
-
-//here we are configuring dist to serve app files
-app.use('/', serveStatic(path.join(__dirname, '../client/dist')))
-
-// this * route is to serve project on different page routes except root `/`
-app.get(/.*/, function (req, res) {
-	res.sendFile(path.join(__dirname, '../client/dist/index.html'))
-})
-
-const port = process.env.PORT || 8080
-app.listen(port)
-console.log(`app is listening on port: ${port}`)
+  console.log(`Example app listening at http://localhost:${port}`);
+});
