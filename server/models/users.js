@@ -1,6 +1,4 @@
-/* B"H
-
-*/
+//Copied from class.  **testing**
 
 const list = [
   {
