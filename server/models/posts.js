@@ -14,7 +14,7 @@ const list = [
 module.exports.GetAll = () =>
   list.map((x, i) => ({
     ...x,
-    user: users.GetByHandle(x.user_handle),
+    user: users.GetByhandle(x.user_handle),
   }));
 module.exports.Get = (post_id) => list[post_id];
 module.exports.Add = (post) => {

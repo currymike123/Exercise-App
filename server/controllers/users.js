@@ -16,7 +16,10 @@ app
       model.Add({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
+        email: req.body.email,
+        password: req.body.password,
         handle: req.body.handle,
+        bio: req.body.bio,
         pic: req.body.pic,
       })
     );
@@ -28,7 +31,10 @@ app
       model.Update(req.params.user_id, {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
+        email: req.body.email,
+        password: req.body.password,
         handle: req.body.handle,
+        bio: req.body.bio,
         pic: req.body.pic,
       })
     )

@@ -5,6 +5,7 @@ const express = require("express");
 
 const usersCtrl = require("./controllers/users");
 const postsCtrl = require("./controllers/posts");
+const friendsCtrl = require("./controllers/friends");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -15,6 +16,7 @@ app
 
   .use("/users", usersCtrl)
   .use("/posts", postsCtrl)
+  .use("/friends", friendsCtrl)
 
   // All the way at the end of the pipeline. Return instead of not found
   .get("*", (req, res) => {

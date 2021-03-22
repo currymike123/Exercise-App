@@ -32,8 +32,17 @@ module.exports.Update = (user_id, user) => {
   if (user.lastName) {
     oldObj.lastName = user.lastName;
   }
+  if (user.email) {
+    oldObj.email = user.email;
+  }
+  if (user.password) {
+    oldObj.password = user.password;
+  }
   if (user.handle) {
     oldObj.handle = user.handle;
+  }
+  if (user.bio) {
+    oldObj.bio = user.bio;
   }
   if (user.pic) {
     oldObj.pic = user.pic;
@@ -44,5 +53,5 @@ module.exports.Update = (user_id, user) => {
 module.exports.Delete = (user_id) => {
   const user = list[user_id];
   list.splice(user_id, 1);
-  return user;
+  return { ...user, password: undefined };
 };
