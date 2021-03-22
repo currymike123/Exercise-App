@@ -5,7 +5,7 @@ const users = require("./users");
 //Relation is user_handle.  Updatet friends array with new friends.
 const list = [
   {
-    friends: ["@mikecurry"],
+    friendList: ["@mikecurry"],
     user_handle: "@johnsmith",
   },
 ];
@@ -13,7 +13,7 @@ const list = [
 module.exports.GetAll = () =>
   list.map((x, i) => ({
     ...x,
-    user: users.GetByhandle(x.user_handle),
+    user: users.GetByHandle(x.user_handle),
   }));
 module.exports.Get = (friend_id) => list[friend_id];
 
