@@ -1,5 +1,7 @@
 //Copied from class.  **testing**
 
+const bcrypt = require("bcrypt");
+
 const list = [
   {
     firstName: "Mike",
@@ -53,5 +55,26 @@ module.exports.Update = (user_id, user) => {
 module.exports.Delete = (user_id) => {
   const user = list[user_id];
   list.splice(user_id, 1);
+  return { ...user, password: undefined };
+};
+
+module.exports.Login = (handle, password) => {
+  console.log({ handle, password });
+  const user = list.find((x) => x.handle == handle && x.password == password);
+  if (!user) throw { code: 401, msg: "Wrong Username or Password" };
+
+  return user;
+};
+
+module.exports.Register = async (user) => {
+  const hash = await bcrypt.hash(user.password, 8);
+
+  user.password = hash;
+
+  if (!user.firstName) {
+    throw { code: 422, msg: "First Name is required" };
+  }
+
+  list.push(user);
   return { ...user, password: undefined };
 };

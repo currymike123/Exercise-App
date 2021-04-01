@@ -12,32 +12,19 @@ app
   })
   .get("/:user_id", (req, res) => res.send(model.Get(req.params.user_id)))
   .post("/", (req, res) => {
-    res.send(
-      model.Add({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: req.body.password,
-        handle: req.body.handle,
-        bio: req.body.bio,
-        pic: req.body.pic,
-      })
-    );
-    console.log(req.headers);
-    console.log(req.body);
+    res.send(model.Add(req.body));
+  })
+  .post("/register", (req, res, next) => {
+    model
+      .Register(req.body)
+      .then((user) => res.send(user))
+      .catch(next);
+  })
+  .post("/login", (req, res) => {
+    res.send(model.Login(req.body.handle, req.body.password));
   })
   .patch("/:user_id", (req, res) =>
-    res.send(
-      model.Update(req.params.user_id, {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: req.body.password,
-        handle: req.body.handle,
-        bio: req.body.bio,
-        pic: req.body.pic,
-      })
-    )
+    res.send(model.Update(req.params.user_id, req.body))
   )
   .delete("/:user_id", (req, res) =>
     res.send(model.Delete(req.params.user_id))

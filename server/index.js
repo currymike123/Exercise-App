@@ -21,6 +21,14 @@ app
   // All the way at the end of the pipeline. Return instead of not found
   .get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "../docs/index.html"));
+  })
+
+  //Error handling
+  .use((error, req, res, next) => {
+    console.error(error);
+
+    res.status(error.code || 500);
+    res.send({ msg: error.msg });
   });
 
 app.listen(port, () => {
