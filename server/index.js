@@ -2,7 +2,11 @@
 
 const path = require("path");
 const express = require("express");
+const dotenv = require("dotenv");
+dotenv.config();
 
+const { LoginRequired } = require("./controllers/security");
+const usersModel = require("./models/users");
 const usersCtrl = require("./controllers/users");
 const postsCtrl = require("./controllers/posts");
 const friendsCtrl = require("./controllers/friends");
@@ -13,6 +17,12 @@ const port = process.env.PORT || 3000;
 app
   .use(express.json())
   .use(express.static("./docs"))
+
+  .use((req, res, next) => {
+    const token = req.headers.authorization?.split(" ")[1];
+    req.user = token && usersModel.FromJWT(token);
+    next();
+  })
 
   .use("/users", usersCtrl)
   .use("/posts", postsCtrl)

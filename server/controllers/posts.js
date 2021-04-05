@@ -1,5 +1,4 @@
 //Copied from class.  **testing**
-
 const express = require("express");
 const users = require("../models/users");
 const model = require("../models/posts");
