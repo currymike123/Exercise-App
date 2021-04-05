@@ -25,8 +25,8 @@ app
   })
 
   .use("/users", usersCtrl)
-  .use("/posts", postsCtrl)
-  .use("/friends", friendsCtrl)
+  .use("/posts", LoginRequired, postsCtrl)
+  .use("/friends", LoginReguired, friendsCtrl)
 
   // All the way at the end of the pipeline. Return instead of not found
   .get("*", (req, res) => {
