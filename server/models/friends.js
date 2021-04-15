@@ -2,7 +2,7 @@
 
 const users = require("./users");
 
-//Relation is user_handle.  Updatet friends array with new friends.
+//Relation is user_handle.  Updatefriends array with new friends.
 const list = [
   {
     friendList: ["@mikecurry"],

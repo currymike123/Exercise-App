@@ -9,6 +9,13 @@ const list = [
     time: Date(),
     user_handle: "@currymike",
   },
+  {
+    src: "https://bulma.io/images/placeholders/1280x960.png",
+    alt: "Placeholder image",
+    caption: "Lorem Ipsom",
+    time: Date(),
+    user_handle: "@mike",
+  },
 ];
 
 module.exports.GetAll = () =>

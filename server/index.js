@@ -2,6 +2,7 @@
 
 const path = require("path");
 const express = require("express");
+const cors = require("cors");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -17,6 +18,7 @@ const port = process.env.PORT || 3000;
 app
   .use(express.json())
   .use(express.static("./docs"))
+  .use(cors())
 
   .use((req, res, next) => {
     const token = req.headers.authorization?.split(" ")[1];
