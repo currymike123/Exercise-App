@@ -18,3 +18,11 @@ export function getUser() {
 export function logout() {
   Session.user = null;
 }
+
+export function toastError(msg) {
+  toastr.open({
+    message: msg,
+    queue: false,
+    type: "is-danger",
+  });
+}
