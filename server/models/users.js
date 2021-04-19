@@ -5,16 +5,7 @@ const jwt = require("jsonwebtoken");
 const SALT_ROUNDS = process.env.SALT_ROUNDS;
 const JWT_SECRET = process.env.JWT_SECRET;
 
-const list = [
-  {
-    firstName: "Mike",
-    lastName: "Curry",
-    handle: "@currymike",
-    pic:
-      "https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg",
-    password: "1",
-  },
-];
+const list = [];
 
 module.exports.GetAll = () => list;
 module.exports.Get = (user_id) => list[user_id];
@@ -34,12 +25,16 @@ module.exports.Register = async (user) => {
 
   user.password = hash;
 
-  if (!user.firstName) {
-    throw { code: 422, msg: "First Name is required" };
+  if (!user.name) {
+    throw { code: 422, msg: "Name is required" };
   }
 
+  const data = { ...user, password: undefined };
+
+  const token = jwt.sign(data, JWT_SECRET);
+
   list.push(user);
-  return { ...user, password: undefined };
+  return { user: data, token };
 };
 module.exports.Update = (user_id, user) => {
   const oldObj = list[user_id];

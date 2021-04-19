@@ -2,8 +2,8 @@ POST http://localhost:3000/users/register
 Content-Type: application/json
 
 {
-    "firstName": "Mike",
-    "lastName": "jacson",
+    "name": "Mike",
+    "email": "currymike@gmail.com",
     "handle": "@mike",
     "password": "DrJill123"
 }
@@ -19,7 +19,7 @@ Content-Type: application/json
 
 ####
 
-http://localhost:3000/posts
+http://localhost:3000/users
 //Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJNaWtlIiwibGFzdE5hbWUiOiJqYWNzb24iLCJoYW5kbGUiOiJAbWlrZSIsImlhdCI6MTYxODUwODE5M30.C0VlHkEoAFa7F8UidSMorumdug8ZXPGMVcpccfE06GY
 // My token
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJNaWtlIiwibGFzdE5hbWUiOiJqYWNzb24iLCJoYW5kbGUiOiJAbWlrZSIsImlhdCI6MTYxODUwODE5M30.C0VlHkEoAFa7F8UidSMorumdug8ZXPGMVcpccfE06GY

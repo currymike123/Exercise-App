@@ -1,10 +1,11 @@
 /* User session information */
 
-import roouter from "../router";
+import { ToastProgrammatic as toastr } from "buefy";
 import { api } from "./myFetch";
 
 const Session = {
   user: null,
+  token: null,
   message: [],
 };
 
@@ -39,5 +40,18 @@ export async function Login(handle, password) {
   toastr.open({
     type: "is-success",
     message: `Welcome ${Session.user.firstName}`,
+  });
+}
+
+export async function Register(user) {
+  console.log(user);
+  const { SessionUser, SessionToken } = await api("users/register", { user });
+  Session.user = SessionUser;
+  Session.token = SessionToken;
+
+  console.log(Session.user);
+  toastr.open({
+    type: "is-success",
+    message: `Welcome ${Session.user.name}`,
   });
 }

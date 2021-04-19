@@ -94,9 +94,10 @@
 </template>
 
 <script>
-import { setUsers } from "../models/Users";
-import { getUsers } from "../models/Users";
-import { setUser } from "../models/Session";
+//import { setUsers } from "../models/Users";
+import GetAllUsers from "../models/Users";
+//import { getUsers } from "../models/Users";
+import { Register } from "../models/Session";
 
 export default {
   data: () => ({
@@ -122,16 +123,16 @@ export default {
       }
     },
     //If the passwords match and they enetered information add user and start session.
-    submitForm() {
+    async submitForm() {
       if (this.hasSucess == true) {
         if (this.user.email != null && this.user.password != null) {
-          //Add to Users.js
-          setUsers(this.user);
+          //Add user to Session and Server
+          await Register({ ...this.user, verifyPassword: undefined });
           //Start Session
-          setUser(this.user);
+          //setUser({ ...this.user, verifyPassword: undefined });
           //Console Testing
-          let list = getUsers();
-          console.log(list);
+          //let list = getUsers();
+          console.log(GetAllUsers());
           this.$router.push("Admin");
         }
       }
