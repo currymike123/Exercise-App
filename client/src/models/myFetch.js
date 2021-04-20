@@ -1,5 +1,5 @@
 import { toastError } from "./Session";
-//import Session from "./Session";
+import Session from "./Session";
 
 export const API_ROOT = process.env.VUE_APP_API_ROOT;
 

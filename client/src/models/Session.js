@@ -45,13 +45,14 @@ export async function Login(handle, password) {
 
 export async function Register(user) {
   console.log(user);
-  const { SessionUser, SessionToken } = await api("users/register", { user });
+  const { SessionUser, SessionToken } = await api("users/register", user);
   Session.user = SessionUser;
   Session.token = SessionToken;
 
   console.log(Session.user);
   toastr.open({
     type: "is-success",
-    message: `Welcome ${Session.user.name}`,
+    //message: `Welcome ${Session.user.name}`,
+    message: `Welcome`,
   });
 }

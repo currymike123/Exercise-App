@@ -1,5 +1,3 @@
-//Copied from class.  **testing**
-
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const SALT_ROUNDS = process.env.SALT_ROUNDS;

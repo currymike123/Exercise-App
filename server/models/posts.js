@@ -1,4 +1,3 @@
-//New code from class. **testing**
 const users = require("./users");
 
 const list = [

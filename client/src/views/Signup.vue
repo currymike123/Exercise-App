@@ -127,7 +127,7 @@ export default {
       if (this.hasSucess == true) {
         if (this.user.email != null && this.user.password != null) {
           //Add user to Session and Server
-          await Register(this.user);
+          await Register({ ...this.user, verifyPassword: undefined });
           //Start Session
           //setUser({ ...this.user, verifyPassword: undefined });
           //Console Testing
