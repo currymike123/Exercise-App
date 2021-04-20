@@ -95,7 +95,7 @@
 
 <script>
 //import { setUsers } from "../models/Users";
-import GetAllUsers from "../models/Users";
+//import GetAllUsers from "../models/Users";
 //import { getUsers } from "../models/Users";
 import { Register } from "../models/Session";
 
@@ -127,12 +127,12 @@ export default {
       if (this.hasSucess == true) {
         if (this.user.email != null && this.user.password != null) {
           //Add user to Session and Server
-          await Register({ ...this.user, verifyPassword: undefined });
+          await Register(this.user);
           //Start Session
           //setUser({ ...this.user, verifyPassword: undefined });
           //Console Testing
           //let list = getUsers();
-          console.log(GetAllUsers());
+          //console.log(GetAllUsers());
           this.$router.push("Admin");
         }
       }
