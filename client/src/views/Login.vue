@@ -12,12 +12,12 @@
                   'is-danger': emailHasDanger,
                   'is-sucess': emailHasSucess,
                 }"
-                v-model="email"
-                type="email"
-                placeholder="Email"
+                v-model="handle"
+                type="text"
+                placeholder="Handle"
               />
               <span class="icon is-small is-left">
-                <i class="fas fa-envelope"></i>
+                <i class=""></i>
               </span>
             </p>
           </div>
@@ -57,13 +57,15 @@
 </template>
 
 <script>
-import { getUsers } from "../models/Users";
-import { setUser } from "../models/Session";
-import { getUser } from "../models/Session";
+//import { getUsers } from "../models/Users";
+//import { setUser } from "../models/Session";
+//import { getUser } from "../models/Session";
+import { Login } from "../models/Session";
 
 export default {
   data: () => ({
     email: null,
+    handle: null,
     password: null,
     usersLog: [],
     msg: "",
@@ -74,38 +76,38 @@ export default {
     passwordHasSucess: false,
   }),
   mounted() {
-    this.usersLog = getUsers();
+    //this.usersLog = getUsers();
   },
   methods: {
     submitForm() {
       //Check if the user exists and if they do log them in.
       console.log("running");
+      Login();
+      //   if (this.usersLog.length == 0) {
+      //     this.msg = "There are no users.  Please Sign up first.";
+      //   }
 
-      if (this.usersLog.length == 0) {
-        this.msg = "There are no users.  Please Sign up first.";
-      }
+      //   for (let i = 0; i < this.usersLog.length; i++) {
+      //     if (this.email == this.usersLog[i].email) {
+      //       this.exists = true;
 
-      for (let i = 0; i < this.usersLog.length; i++) {
-        if (this.email == this.usersLog[i].email) {
-          this.exists = true;
+      //       if (this.password == this.usersLog[i].password) {
+      //         //Password matches so set as Session user.
 
-          if (this.password == this.usersLog[i].password) {
-            //Password matches so set as Session user.
-
-            setUser(this.usersLog[i]);
-            console.log(getUser());
-            this.$router.push("Admin");
-          } else {
-            this.msg = "incorrect password";
-            this.emailHasDanger = false;
-            this.emailHasSuces = true;
-            this.passwordHasDanger = true;
-          }
-        } else {
-          this.msg = "user doesn't exist";
-          this.emailHasDanger = true;
-        }
-      }
+      //         setUser(this.usersLog[i]);
+      //         console.log(getUser());
+      //         this.$router.push("Admin");
+      //       } else {
+      //         this.msg = "incorrect password";
+      //         this.emailHasDanger = false;
+      //         this.emailHasSuces = true;
+      //         this.passwordHasDanger = true;
+      //       }
+      //     } else {
+      //       this.msg = "user doesn't exist";
+      //       this.emailHasDanger = true;
+      //     }
+      //   }
     },
   },
 };
