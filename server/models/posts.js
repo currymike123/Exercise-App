@@ -2,18 +2,20 @@ const users = require("./users");
 
 const list = [
   {
-    src: "https://bulma.io/images/placeholders/1280x960.png",
+    Exercise: "https://bulma.io/images/placeholders/1280x960.png",
     alt: "Placeholder image",
     caption: "Lorem Ipsom",
     time: Date(),
-    user_handle: "@currymike",
+    user_handle: "@johnsmith",
+    isPublic: true,
   },
   {
-    src: "https://bulma.io/images/placeholders/1280x960.png",
+    Exercise: "https://bulma.io/images/placeholders/1280x960.png",
     alt: "Placeholder image",
     caption: "Lorem Ipsom",
     time: Date(),
-    user_handle: "@mike",
+    user_handle: "@johnsmith",
+    isPublic: true,
   },
 ];
 
@@ -24,11 +26,11 @@ module.exports.GetAll = () =>
   }));
 module.exports.Get = (post_id) => list[post_id];
 module.exports.Add = (post) => {
-  if (!post.user_handle) {
+  if (!post.user.handle) {
     throw { code: 422, msg: "Post must have an Owner" };
   }
   list.push(post);
-  return { ...post };
+  return post;
 };
 module.exports.Update = (post_id, post) => {
   const oldObj = list[post_id];

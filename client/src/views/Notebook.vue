@@ -35,9 +35,10 @@
 import Vue from "vue";
 import NotebookEntry from "../components/NotebookEntry";
 import NotebookNewEntry from "../components/NotebookNewEntry";
-import { getEntries, setEntries, deleteEntries } from "../models/Entries";
-
-import { getUser } from "../models/Session";
+import { getEntries, deleteEntries } from "../models/Entries";
+import Session from "../models/Session";
+import { api } from "../models/myFetch";
+//import { getUser } from "../models/Session";
 
 export default Vue.extend({
   data: () => ({
@@ -60,14 +61,20 @@ export default Vue.extend({
   mounted() {
     //Update the current user and get entries.
 
-    this.user = getUser();
-    this.newEntry.user = this.user;
-    this.entries = getEntries(this.user);
+    this.user = Session.user;
+    console.log("THIS IS THE SESSION USER");
+    console.log(Session.user);
+    this.newEntry.user = Session.user;
+    //this.entries = getEntries(this.user);
   },
   methods: {
-    addEntry() {
+    async addEntry() {
       //Add entery to Enteries.js
-      setEntries(this.newEntry);
+      //setEntries(this.newEntry);
+      console.log("THIS IS THE Entry sent to the server");
+      console.log(this.newEntry);
+      await api("posts", this.newEntry);
+
       //Reset newEntry
       this.newEntry = {
         user: {},
@@ -79,9 +86,9 @@ export default Vue.extend({
         notes: "",
       };
       //Add the current user into newEntry
-      this.newEntry.user = this.user;
+      this.newEntry.user = Session.user;
       //Get the new set of Entries
-      this.entries = getEntries(this.user);
+      //this.entries = getEntries(this.user);
     },
     deleteEntry(i) {
       //Remove stored version
