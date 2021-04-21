@@ -55,3 +55,11 @@ export async function Register(user) {
     message: `Welcome ${Session.user.name}`,
   });
 }
+
+export async function Update(user) {
+  const SessionInfo = await api("users/update", user);
+  Session.user = SessionInfo.user;
+  Session.token = SessionInfo.token;
+  console.log("This is the returned Session User");
+  console.log(Session.user);
+}
