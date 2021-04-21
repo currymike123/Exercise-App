@@ -29,9 +29,12 @@ app
       .then((user) => res.send(user))
       .catch(next);
   })
-  .patch("/:user_id", LoginRequired, (req, res) =>
-    res.send(model.Update(req.params.user_id, req.body))
-  )
+  .patch("/update", LoginRequired, (req, res, next) => {
+    model
+      .Update(req.body.user)
+      .then((user) => res.send(user))
+      .catch(next);
+  })
   .delete("/:user_id", LoginRequired, (req, res) =>
     res.send(model.Delete(req.params.user_id))
   );

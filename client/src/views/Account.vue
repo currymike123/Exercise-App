@@ -157,8 +157,9 @@
 
 <script>
 import AdminMenu from "@/components/AdminMenu";
-import { getSessionUser, updateUsers } from "../models/Users";
-import { getUser } from "../models/Session";
+//import { getSessionUser, updateUsers } from "../models/Users";
+//import { getUser } from "../models/Session";
+import Session from "../models/Session";
 
 export default {
   data: () => ({
@@ -168,12 +169,12 @@ export default {
     AdminMenu,
   },
   mounted() {
-    let currentUser = getUser();
-    this.user = getSessionUser(currentUser);
+    //let currentUser = getUser();
+    this.user = Session.user;
   },
   methods: {
     update() {
-      updateUsers(this.user);
+      //updateUsers(this.user);
     },
   },
 };

@@ -34,22 +34,35 @@ module.exports.Register = async (user) => {
   list.push(user);
   return { user: data, token };
 };
-module.exports.Update = (user_id, user) => {
-  const oldObj = list[user_id];
-  if (user.firstName) {
-    oldObj.firstName = user.firstName;
+module.exports.Update = async (user) => {
+  const index = list.findIndex(users.handle);
+  if (user.name) {
+    list[index].name = user.name;
   }
-  if (user.lastName) {
-    oldObj.lastName = user.lastName;
+  if (user.email) {
+    list[index].email = user.email;
   }
   if (user.handle) {
-    oldObj.handle = user.handle;
+    list[index].handle = user.handle;
+  }
+  if (user.password) {
+    const hash = await bcrypt.hash(user.password, +SALT_ROUNDS);
+    list[index].password = hash;
   }
   if (user.pic) {
-    oldObj.pic = user.pic;
+    list[index].pic = user.pic;
   }
-  //list[user_id] = newObj ;
-  return { ...oldObj, password: undefined };
+  if (user.bio) {
+    list[index].bio = user.bio;
+  }
+  if (user.friends) {
+    list[index].friends = user.friends;
+  }
+  const data = { ...user, password: undefined };
+
+  const token = jwt.sign(data, JWT_SECRET);
+
+  return { ...list[index], password: undefined, token };
 };
 module.exports.Delete = (user_id) => {
   const user = list[user_id];
