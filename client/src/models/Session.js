@@ -32,9 +32,11 @@ export function toastError(msg) {
 }
 
 export async function Login(handle, password) {
-  const { user, token } = await api("users/login", { handle, password });
-  Session.user = user;
-  Session.token = token;
+  const SessionInfo = await api("users/login", { handle, password });
+  Session.user = SessionInfo.user;
+  Session.token = SessionInfo.token;
+  console.log("This is the returned Session User");
+  console.log(Session.user);
 
   console.log(Session.user);
   toastr.open({
@@ -44,11 +46,10 @@ export async function Login(handle, password) {
 }
 
 export async function Register(user) {
-  console.log(user);
-  const { SessionUser, SessionToken } = await api("users/register", user);
-  Session.user = SessionUser;
-  Session.token = SessionToken;
-
+  const SessionInfo = await api("users/register", user);
+  Session.user = SessionInfo.user;
+  Session.token = SessionInfo.token;
+  console.log("This is the returned Session User");
   console.log(Session.user);
   toastr.open({
     type: "is-success",
