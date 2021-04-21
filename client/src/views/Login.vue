@@ -17,7 +17,7 @@
                 placeholder="Handle"
               />
               <span class="icon is-small is-left">
-                <i class=""></i>
+                <i class="fas fa-user"></i>
               </span>
             </p>
           </div>
@@ -79,10 +79,12 @@ export default {
     //this.usersLog = getUsers();
   },
   methods: {
-    submitForm() {
+    async submitForm() {
       //Check if the user exists and if they do log them in.
       console.log("running");
-      Login();
+      console.log(this.handle);
+      await Login(this.handle, this.password);
+      this.$router.push("Admin");
       //   if (this.usersLog.length == 0) {
       //     this.msg = "There are no users.  Please Sign up first.";
       //   }

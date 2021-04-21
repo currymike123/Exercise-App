@@ -38,10 +38,9 @@ export async function Login(handle, password) {
   console.log("This is the returned Session User");
   console.log(Session.user);
 
-  console.log(Session.user);
   toastr.open({
     type: "is-success",
-    message: `Welcome ${Session.user.firstName}`,
+    message: `Welcome ${Session.user.name}`,
   });
 }
 
@@ -53,7 +52,6 @@ export async function Register(user) {
   console.log(Session.user);
   toastr.open({
     type: "is-success",
-    //message: `Welcome ${Session.user.name}`,
-    message: `Welcome`,
+    message: `Welcome ${Session.user.name}`,
   });
 }
