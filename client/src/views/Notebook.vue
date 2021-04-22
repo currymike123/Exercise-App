@@ -66,8 +66,9 @@ export default Vue.extend({
     console.log("THIS IS THE SESSION USER");
     console.log(Session.user);
     this.newEntry.user = Session.user;
-    this.entries = await GetPostsForUser(Session.user.handle);
-    //this.entries = getEntries(this.user);
+    //const updatedEntries = await GetPostsForUser(Session.user.handle);
+    //this.entries = updatedEntries.reverse();
+    //console.log(this.entries);
   },
   methods: {
     async addEntry() {
