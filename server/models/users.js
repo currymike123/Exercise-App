@@ -20,7 +20,7 @@ module.exports.Add = (user) => {
 };
 module.exports.Register = async (user) => {
   const hash = await bcrypt.hash(user.password, +SALT_ROUNDS);
-
+  console.log("I'm in the Register server");
   user.password = hash;
 
   if (!user.name) {
