@@ -171,6 +171,10 @@ export default {
   mounted() {
     //let currentUser = getUser();
     this.user = Session.user;
+    console.log("This is the session user from Account");
+    console.log(Session.user);
+    console.log("This is the session token from Account");
+    console.log(Session.token);
   },
   methods: {
     update() {

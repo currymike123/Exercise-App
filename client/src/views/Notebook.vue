@@ -73,8 +73,8 @@ export default Vue.extend({
       //setEntries(this.newEntry);
       console.log("THIS IS THE Entry sent to the server");
       console.log(this.newEntry);
-      await api("posts", this.newEntry);
-
+      const sentPost = await api("posts", this.newEntry);
+      console.log(sentPost);
       //Reset newEntry
       this.newEntry = {
         user: {},
