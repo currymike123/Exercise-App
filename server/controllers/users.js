@@ -18,6 +18,7 @@ app
     res.send(model.Add(req.body));
   })
   .post("/register", (req, res, next) => {
+    console.log({ body: req.body });
     model
       .Register(req.body)
       .then((user) => res.send(user))
