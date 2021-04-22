@@ -45,6 +45,7 @@ export async function Login(handle, password) {
 }
 
 export async function Register(user) {
+  //Register the user
   const SessionInfo = await api("users/register", user);
   Session.user = SessionInfo.user;
   Session.token = SessionInfo.token;

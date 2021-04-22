@@ -3,15 +3,10 @@
 const users = require("./users");
 
 //Relation is user_handle.  Updatefriends array with new friends.
-const list = [
-  {
-    friendList: ["@mikecurry"],
-    user_handle: "@johnsmith",
-  },
-];
+const friendList = [];
 
 module.exports.GetAll = () =>
-  list.map((x, i) => ({
+  friendList.map((x, i) => ({
     ...x,
     user: users.GetByHandle(x.user_handle),
   }));
@@ -22,20 +17,20 @@ module.exports.Add = (friend) => {
   if (!friend.user_handle) {
     throw "friend must have an Owner";
   }
-  list.push(friend);
+  friendList.push(friend);
   return { ...friend };
 };
 
 //Same as post?
 module.exports.Update = (friend_id, friend) => {
-  const oldObj = list[friend_id];
+  const oldObj = friendList[friend_id];
   const newObj = { ...oldObj, ...friend };
-  list[friend_id] = newObj;
+  friendList[friend_id] = newObj;
   return newObj;
 };
 
 module.exports.Delete = (friend_id) => {
-  const friend = list[friend_id];
-  list.splice(friend_id, 1);
+  const friend = friendList[friend_id];
+  friendList.splice(friend_id, 1);
   return friend;
 };

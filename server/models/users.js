@@ -32,6 +32,7 @@ module.exports.Register = async (user) => {
   const token = jwt.sign(data, JWT_SECRET);
 
   list.push(user);
+
   return { user: data, token };
 };
 module.exports.Update = async (user) => {

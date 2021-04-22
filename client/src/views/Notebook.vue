@@ -92,7 +92,8 @@ export default Vue.extend({
       //Add the current user into newEntry
       this.newEntry.user = Session.user;
       //Get the new set of Entries
-      this.entries = await GetPostsForUser(Session.user.handle);
+      const updatedEntries = await GetPostsForUser(Session.user.handle);
+      this.entries = updatedEntries.reverse();
       console.log(this.entries);
     },
     deleteEntry(i) {
