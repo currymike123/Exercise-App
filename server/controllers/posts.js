@@ -13,10 +13,12 @@ app
     //if (+req.params.post_id) {
     ///  res.send(model.Get(req.params.post_id));
     //} else {
+    console.log("I'm in the server");
     res.send(model.GetWall(req.params.post_id));
     //}
   })
   .post("/", (req, res) => {
+    console.log("Im in add server");
     res.send(model.Add(req.body));
   })
   .patch("/:post_id", (req, res) =>

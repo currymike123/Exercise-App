@@ -72,10 +72,11 @@ export default Vue.extend({
     async addEntry() {
       //Add entery to Enteries.js
       //setEntries(this.newEntry);
-      console.log("THIS IS THE Entry sent to the server");
-      console.log(this.newEntry);
+      console.log("THIS IS user sent to the server");
+      console.log(this.newEntry.user);
       //const sentPost = await api("posts", this.newEntry);
       const sentPost = await AddPost(this.newEntry);
+      console.log("This was returned from the server");
       console.log(sentPost);
       //Reset newEntry
       this.newEntry = {

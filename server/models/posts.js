@@ -38,10 +38,10 @@ module.exports.GetAll = () => {
 };
 
 module.exports.GetNotebook = (handle) => {
-  return listWithOwner().filter((post) => post.handle == handle);
+  return list.filter((post) => post.user.handle == handle);
 };
 
 module.exports.GetWall = (handle) => {
   console.log(handle);
-  return listWithOwner().filter((post) => post.user.handle == handle);
+  return list.filter((post) => post.user.handle == handle);
 };
