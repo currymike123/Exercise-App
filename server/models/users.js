@@ -33,7 +33,8 @@ module.exports.Register = async (user) => {
 
   const data = { ...user, password: undefined };
 
-  const token = jwt.sign(data, JWT_SECRET);
+  //const token = jwt.sign(data, JWT_SECRET);
+  const token = data;
 
   list.push(user);
 
