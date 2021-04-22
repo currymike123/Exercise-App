@@ -1,28 +1,24 @@
 //Array of all users entries
-const entries = [];
+import { api } from "../models/myFetch";
 
-export default entries;
-
-export function getEntries(currentUser) {
-  //Array of the current users entries
-  let userEntries = [];
-  for (let i = 0; i < entries.length; i++) {
-    if (currentUser.email == entries[i].user.email) {
-      userEntries.push(entries[i]);
-    }
-  }
-
-  return userEntries;
+export function GetMyPosts() {
+  return api("posts");
 }
 
-export function setEntries(entry) {
-  entries.unshift(entry);
+export async function GetPostsForUser(handle) {
+  return await api(`posts/${handle}`);
 }
 
-export function deleteEntries(index) {
-  entries.splice(index, 1);
+export function GetMyFeed() {
+  return api("posts/feed");
 }
 
-export function getAllEntries() {
-  return entries;
+export async function AddPost(post) {
+  return await api("posts", post);
+}
+
+export function DeletePost(post_id) {
+  // This wont actually delete the correct item unless you are an administrator viewing all posts.
+  //  TODO: add real ids to posts so that we can address them properly
+  return api("posts/" + post_id, {}, "DELETE");
 }

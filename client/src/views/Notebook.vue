@@ -37,7 +37,8 @@ import NotebookEntry from "../components/NotebookEntry";
 import NotebookNewEntry from "../components/NotebookNewEntry";
 import { getEntries, deleteEntries } from "../models/Entries";
 import Session from "../models/Session";
-import { api } from "../models/myFetch";
+import { AddPost, GetPostsForUser } from "../models/Entries";
+
 //import { getUser } from "../models/Session";
 
 export default Vue.extend({
@@ -73,7 +74,8 @@ export default Vue.extend({
       //setEntries(this.newEntry);
       console.log("THIS IS THE Entry sent to the server");
       console.log(this.newEntry);
-      const sentPost = await api("posts", this.newEntry);
+      //const sentPost = await api("posts", this.newEntry);
+      const sentPost = await AddPost(this.newEntry);
       console.log(sentPost);
       //Reset newEntry
       this.newEntry = {
@@ -88,13 +90,14 @@ export default Vue.extend({
       //Add the current user into newEntry
       this.newEntry.user = Session.user;
       //Get the new set of Entries
-      //this.entries = getEntries(this.user);
+      this.entries = await GetPostsForUser(Session.user.handle);
+      console.log(this.entries);
     },
     deleteEntry(i) {
       //Remove stored version
       deleteEntries(i);
       //Get the new set of Entries
-      this.entries = getEntries(this.user);
+      this.entries = getEntries(this.user.handle);
     },
     displayEntries(i) {
       //Split between two columns

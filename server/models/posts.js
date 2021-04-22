@@ -1,23 +1,6 @@
 const users = require("./users");
 
-const list = [
-  {
-    Exercise: "https://bulma.io/images/placeholders/1280x960.png",
-    alt: "Placeholder image",
-    caption: "Lorem Ipsom",
-    time: Date(),
-    user_handle: "@johnsmith",
-    isPublic: true,
-  },
-  {
-    Exercise: "https://bulma.io/images/placeholders/1280x960.png",
-    alt: "Placeholder image",
-    caption: "Lorem Ipsom",
-    time: Date(),
-    user_handle: "@johnsmith",
-    isPublic: true,
-  },
-];
+const list = [];
 
 module.exports.GetAll = () =>
   list.map((x, i) => ({
@@ -42,4 +25,23 @@ module.exports.Delete = (post_id) => {
   const post = list[post_id];
   list.splice(post_id, 1);
   return post;
+};
+
+const listWithOwner = () =>
+  list.map((x, i) => ({
+    ...x,
+    user: users.GetByHandle(x.handle),
+  }));
+
+module.exports.GetAll = () => {
+  return listWithOwner();
+};
+
+module.exports.GetNotebook = (handle) => {
+  return listWithOwner().filter((post) => post.handle == handle);
+};
+
+module.exports.GetWall = (handle) => {
+  console.log(handle);
+  return listWithOwner().filter((post) => post.user.handle == handle);
 };
