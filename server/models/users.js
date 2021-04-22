@@ -19,6 +19,7 @@ module.exports.Add = (user) => {
   return { ...user, password: undefined };
 };
 module.exports.Register = async (user) => {
+  console.log({ password: user.password, SALT_ROUNDS });
   const hash = await bcrypt.hash(user.password, +SALT_ROUNDS);
   console.log("I'm in the Register server");
   user.password = hash;
