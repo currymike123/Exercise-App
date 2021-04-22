@@ -1,6 +1,6 @@
 const users = require("./users");
 
-const list = [];
+const list = [{ name: "I'm here" }];
 
 module.exports.GetAll = () =>
   list.map((x, i) => ({
