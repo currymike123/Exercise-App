@@ -14,7 +14,7 @@ app
     ///  res.send(model.Get(req.params.post_id));
     //} else {
     console.log("I'm in the server");
-    res.send(model.GetWall(req.params.post_id));
+    res.send(model.GetNotebook(req.params.post_id));
     //}
   })
   .post("/", (req, res) => {

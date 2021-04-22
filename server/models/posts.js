@@ -1,6 +1,6 @@
 const users = require("./users");
 
-const list = [{ name: "I'm here" }];
+const list = [];
 
 module.exports.GetAll = () =>
   list.map((x, i) => ({
@@ -39,10 +39,6 @@ module.exports.GetAll = () => {
 };
 
 module.exports.GetNotebook = (handle) => {
-  return list.filter((post) => post.user.handle == handle);
-};
-
-module.exports.GetWall = (handle) => {
   console.log(handle);
   return list.filter((post) => post.user.handle == handle);
 };
