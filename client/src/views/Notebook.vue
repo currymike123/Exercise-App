@@ -59,13 +59,14 @@ export default Vue.extend({
     NotebookEntry,
     NotebookNewEntry,
   },
-  mounted() {
+  async mounted() {
     //Update the current user and get entries.
 
     this.user = Session.user;
     console.log("THIS IS THE SESSION USER");
     console.log(Session.user);
     this.newEntry.user = Session.user;
+    this.entries = await GetPostsForUser(Session.user.handle);
     //this.entries = getEntries(this.user);
   },
   methods: {
