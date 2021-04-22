@@ -35,9 +35,9 @@
 import Vue from "vue";
 import NotebookEntry from "../components/NotebookEntry";
 import NotebookNewEntry from "../components/NotebookNewEntry";
-import { getEntries, deleteEntries } from "../models/Entries";
+//import { getEntries, deleteEntries } from "../models/Entries";
 import Session from "../models/Session";
-import { AddPost, GetPostsForUser } from "../models/Entries";
+import { AddPost, GetPostsForUser, DeletePost } from "../models/Entries";
 
 //import { getUser } from "../models/Session";
 
@@ -96,11 +96,13 @@ export default Vue.extend({
       this.entries = updatedEntries.reverse();
       console.log(this.entries);
     },
-    deleteEntry(i) {
+    async deleteEntry(i) {
       //Remove stored version
-      deleteEntries(i);
+
+      await DeletePost(i);
       //Get the new set of Entries
-      this.entries = getEntries(this.user.handle);
+      const updatedEntries = await GetPostsForUser(Session.user.handle);
+      this.entries = updatedEntries.reverse();
     },
     displayEntries(i) {
       //Split between two columns

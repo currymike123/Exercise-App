@@ -22,6 +22,7 @@ module.exports.Update = (post_id, post) => {
   return newObj;
 };
 module.exports.Delete = (post_id) => {
+  console.log("In the delete server" + post_id);
   const post = list[post_id];
   list.splice(post_id, 1);
   return post;

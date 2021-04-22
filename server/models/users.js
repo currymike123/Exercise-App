@@ -26,6 +26,10 @@ module.exports.Register = async (user) => {
   if (!user.name) {
     throw { code: 422, msg: "Name is required" };
   }
+  const exists = list.some((x) => x.handle === user.handle);
+  if (exists) {
+    throw { code: 422, msg: "That handle is not available" };
+  }
 
   const data = { ...user, password: undefined };
 
