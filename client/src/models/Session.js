@@ -53,7 +53,7 @@ export async function Register(user) {
   console.log(Session.user);
   toastr.open({
     type: "is-success",
-    message: `Welcome ${Session.user.name}`,
+    message: `Welcome `,
   });
 }
 
