@@ -20,7 +20,7 @@ app
   .post("/register", (req, res, next) => {
     console.log({ body: req.body });
     model
-      .Register(req.body)
+      .Register(req.body.user)
       .then((user) => res.send(user))
       .catch(next);
   })
