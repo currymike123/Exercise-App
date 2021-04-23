@@ -47,7 +47,13 @@ export async function Register(user) {
   const SessionInfo = await api("users/register", user);
   Session.user = SessionInfo.user;
   Session.token = SessionInfo.token;
-
+  //Add a Friends List
+  const friends = await api("friends/register", {
+    handle: user.handle,
+    name: user.name,
+    friends: [],
+  });
+  console.log(friends);
   toastr.open({
     type: "is-success",
     message: `Welcome to Will`,

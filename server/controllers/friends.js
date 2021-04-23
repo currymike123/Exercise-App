@@ -9,17 +9,22 @@ const app = express.Router();
 
 app
   .get("/", (req, res) => {
-    res.send(model.GetAll());
+    res.send(model.Get());
   })
-  .get("/:friend_id", (req, res) => res.send(model.Get(req.params.friend_id)))
+  .get("/getHandle", (req, res) => {
+    res.send(model.GetHandle(req.body));
+  })
   .post("/", (req, res) => {
     res.send(model.Add(req.body));
   })
-  .patch("/:friend_id", (req, res) =>
-    res.send(model.Update(req.params.friend_id, req.body))
+  .post("/Register", (req, res) => {
+    res.send(model.Register(req.body));
+  })
+  .patch("/", (req, res) =>
+    res.send(model.Delete(req.body.handle, req.body.friend))
   )
-  .delete("/:friend_id", (req, res) =>
-    res.send(model.Delete(req.params.friend_id))
+  .delete("/", (req, res) =>
+    res.send(model.Delete(req.body.handle, req.body.friend))
   );
 
 module.exports = app;

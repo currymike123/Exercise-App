@@ -39,6 +39,5 @@ module.exports.GetAll = () => {
 };
 
 module.exports.GetNotebook = (handle) => {
-  console.log(handle);
   return list.filter((post) => post.user.handle == handle);
 };
