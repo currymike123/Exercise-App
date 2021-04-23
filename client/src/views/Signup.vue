@@ -70,7 +70,7 @@
                   'is-sucess': hasSucess,
                 }"
                 v-on:input="checkForm"
-                v-model="user.verifyPassword"
+                v-model="verifyPassword"
                 type="password"
                 placeholder="VerifyPassword"
               />
@@ -106,15 +106,15 @@ export default {
       email: null,
       handle: null,
       password: null,
-      verifyPassword: null,
     },
+    verifyPassword: null,
     hasDanger: false,
     hasSucess: false,
   }),
   methods: {
     //Check to see if the passwords match.
     checkForm() {
-      if (this.user.password == this.user.verifyPassword) {
+      if (this.user.password == this.verifyPassword) {
         this.hasDanger = false;
         this.hasSucess = true;
       } else {
@@ -127,7 +127,7 @@ export default {
       if (this.hasSucess == true) {
         if (this.user.email != null && this.user.password != null) {
           //Add user to Session and Server
-          await Register({ ...this.user, verifyPassword: undefined });
+          await Register(this.user);
           //Start Session
           //setUser({ ...this.user, verifyPassword: undefined });
           //Console Testing
