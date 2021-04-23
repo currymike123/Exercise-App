@@ -19,9 +19,8 @@ module.exports.Add = (user) => {
   return { ...user, password: undefined };
 };
 module.exports.Register = async (user) => {
-  console.log({ password: user.password, SALT_ROUNDS });
   const hash = await bcrypt.hash(user.password, +SALT_ROUNDS);
-  console.log("I'm in the Register server");
+
   user.password = hash;
 
   if (!user.name) {
@@ -77,7 +76,6 @@ module.exports.Delete = (user_id) => {
 };
 
 module.exports.Login = async (handle, password) => {
-  console.log({ handle, password });
   const user = list.find((x) => x.handle == handle);
   if (!user)
     throw { code: 401, msg: "Sorry there is no user with that handle" };

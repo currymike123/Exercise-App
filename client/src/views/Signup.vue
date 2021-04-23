@@ -128,11 +128,7 @@ export default {
         if (this.user.email != null && this.user.password != null) {
           //Add user to Session and Server
           await Register(this.user);
-          //Start Session
-          //setUser({ ...this.user, verifyPassword: undefined });
-          //Console Testing
-          //let list = getUsers();
-          //console.log(GetAllUsers());
+
           this.$router.push("Admin");
         }
       }

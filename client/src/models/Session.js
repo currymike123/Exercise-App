@@ -35,8 +35,6 @@ export async function Login(handle, password) {
   const SessionInfo = await api("users/login", { handle, password });
   Session.user = SessionInfo.user;
   Session.token = SessionInfo.token;
-  console.log("This is the returned Session User");
-  console.log(Session.user);
 
   toastr.open({
     type: "is-success",
@@ -49,8 +47,7 @@ export async function Register(user) {
   const SessionInfo = await api("users/register", user);
   Session.user = SessionInfo.user;
   Session.token = SessionInfo.token;
-  console.log("This is the returned Session User");
-  console.log(Session.user);
+
   toastr.open({
     type: "is-success",
     message: `Welcome to Will`,
@@ -61,6 +58,4 @@ export async function Update(user) {
   const SessionInfo = await api("users/update", user);
   Session.user = SessionInfo.user;
   Session.token = SessionInfo.token;
-  console.log("This is the returned Session User");
-  console.log(Session.user);
 }

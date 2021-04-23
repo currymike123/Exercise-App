@@ -99,11 +99,11 @@ export default Vue.extend({
     },
     async deleteEntry(i) {
       //Remove stored version
-
-      await DeletePost(i);
+      let index = this.entries.length - i;
+      await DeletePost(index);
       //Get the new set of Entries
       const updatedEntries = await GetPostsForUser(Session.user.handle);
-      this.entries = updatedEntries.reverse();
+      this.entries = updatedEntries;
     },
     displayEntries(i) {
       //Split between two columns
