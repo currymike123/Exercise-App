@@ -1,4 +1,3 @@
-//Copied from class.  **testing**
 const express = require("express");
 const users = require("../models/users");
 const model = require("../models/posts");
@@ -10,7 +9,12 @@ app
     res.send(model.GetAll());
   })
   .get("/:post_id", (req, res) => {
+    console.log("Notebooke here");
     res.send(model.GetNotebook(req.params.post_id));
+  })
+  .get("/feed/:post_id", (req, res) => {
+    console.log(req.body.handle);
+    res.send(model.GetFeed(req.params.post_id));
   })
   .post("/", (req, res) => {
     res.send(model.Add(req.body));

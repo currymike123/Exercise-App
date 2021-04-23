@@ -27,7 +27,7 @@ app
   })
 
   .use("/users", usersCtrl)
-  .use("/posts", LoginRequired, postsCtrl)
+  .use("/posts", postsCtrl)
   .use("/friends", friendsCtrl)
 
   // All the way at the end of the pipeline. Return instead of not found

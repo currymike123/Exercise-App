@@ -1,4 +1,5 @@
 const users = require("./users");
+const friends = require("./friends");
 
 const list = [];
 
@@ -22,7 +23,6 @@ module.exports.Update = (post_id, post) => {
   return newObj;
 };
 module.exports.Delete = (post_id) => {
-  console.log("In the delete server" + post_id);
   const post = list[post_id];
   list.splice(post_id, 1);
   return post;
@@ -40,4 +40,12 @@ module.exports.GetAll = () => {
 
 module.exports.GetNotebook = (handle) => {
   return list.filter((post) => post.user.handle == handle);
+};
+
+module.exports.GetFeed = (handle) => {
+  console.log("In GetFeed");
+  let handles = friends.GetHandle(handle);
+  return handles.forEach((handle) =>
+    list.filter((post) => post.user.handle == handle)
+  );
 };

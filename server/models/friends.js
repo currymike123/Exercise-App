@@ -7,7 +7,7 @@ const friendList = [];
 
 //Get list of friends and only return name and handle
 module.exports.Get = () => {
-  friendsList.map((friend) => {
+  friendList.map((friend) => {
     delete friend.friends;
     return user;
   });
@@ -15,9 +15,7 @@ module.exports.Get = () => {
 
 //Return the friends list of a user.
 module.exports.GetHandle = (handle) => {
-  const tempObj = friendListist.filter(
-    (handle) => friendsList.handle == handle
-  );
+  const tempObj = friendList.filter((handle) => friendList.handle == handle);
   return tempObj.friends;
 };
 

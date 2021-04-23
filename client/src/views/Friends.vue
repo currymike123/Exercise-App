@@ -78,8 +78,10 @@ import FriendBlock from "../components/FriendBlock";
 import FriendList from "../components/FriendList";
 import FriendPost from "../components/FriendPost";
 import { getAllEntries } from "../models/Entries";
-import { getUsers, updateUsers } from "../models/Users";
+import { updateUsers } from "../models/Users";
 import { getUser } from "../models/Session";
+import { api } from "../models/myFetch";
+
 export default Vue.extend({
   //
   data: () => ({
@@ -96,12 +98,13 @@ export default Vue.extend({
     FriendList,
   },
   mounted() {
+    //Get the current user to add friends
+    this.currentUser = getUser();
     //Get all the entries for the feed
     this.posts = getAllEntries();
     //Get all the users for search
-    this.users = getUsers();
-    //Get the current user to add friends
-    this.currentUser = getUser();
+    this.users = api("friends", {}, "GET");
+    //Get all the current users friends
   },
   methods: {
     //
