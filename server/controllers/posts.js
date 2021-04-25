@@ -9,7 +9,6 @@ app
     res.send(model.GetAll());
   })
   .get("/:post_id", (req, res) => {
-    console.log("Notebooke here");
     res.send(model.GetNotebook(req.params.post_id));
   })
   .get("/feed/:post_id", (req, res) => {

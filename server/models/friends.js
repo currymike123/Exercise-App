@@ -5,12 +5,8 @@ const users = require("./users");
 //Relation is user_handle.  Updatefriends array with new friends.
 const friendList = [];
 
-//Get list of friends and only return name and handle
+//Get list of friends
 module.exports.Get = () => {
-  // friendList.map((friend) => {
-  //   delete friend.friends;
-  //   return user;
-  // });
   return friendList;
 };
 
@@ -25,20 +21,25 @@ module.exports.Register = (user) => {
   return user;
 };
 
-module.exports.Update = (handle, friend) => {
-  const index = friendList.findIndex(handle);
-  const oldObj = friendList[index];
-  const newObj = { ...oldObj, ...friend };
-  friendList[index] = newObj;
-  return newObj;
+module.exports.Update = (data) => {
+  const index = friendList.findIndex(function (fIndex) {
+    return fIndex.handle === data.handle;
+  });
+
+  friendList[index].friends.push(data.friend);
+
+  return friendList[index];
 };
 
-module.exports.Delete = (handle, friend) => {
-  const index = friendList.findIndex(handle);
-  const tempObj = friendList[index];
-  const friendIndex = tempObj.friends.findIndex(friend);
-  tempObj.friends.splice(friendIndex, 1);
-  friendList[index] = tempObj;
+module.exports.Delete = (data) => {
+  const index = friendList.findIndex(function (fIndex) {
+    return fIndex.handle === data.handle;
+  });
 
-  return tempObj;
+  friendList[index].friends.splice(
+    friendList[index].friends.indexOf(data.friend),
+    1
+  );
+
+  return friendList[index];
 };
