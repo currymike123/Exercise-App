@@ -39,7 +39,7 @@
             </div>
           </div>
           <div v-else>
-            <div v-for="(friends, i) in this.currentUser.friends" :key="i">
+            <div v-for="(friends, i) in this.friends" :key="i">
               <FriendList
                 :friends="friends"
                 @addFriend="addFriend(searchedUsers[i])"
@@ -85,6 +85,7 @@ export default Vue.extend({
     search: null,
     onSearch: true,
     currentUser: {},
+    friends: {},
   }),
   components: {
     FriendPost,
@@ -92,18 +93,15 @@ export default Vue.extend({
     FriendList,
   },
   async mounted() {
-    //Get all the users for search
     this.users = await api("friends/", null, "GET");
-    console.log(this.users);
-    //Get the current user to add friends
-    //this.currentUser = getUser();
-    //Get all the entries for the feed
+
     this.posts = await api(
       "posts/feed",
       { handle: Session.user.handle },
       "POST"
     );
-    //Get all the current users friends
+
+    this.getFriendsList();
   },
   methods: {
     //
@@ -111,14 +109,7 @@ export default Vue.extend({
       this.onSearch = onSearch;
       this.$forceUpdate();
     },
-    onFriendsList(curPost) {
-      //If you are on my friends list show your posts.
-      if (this.currentUser.friends.includes(curPost.user.email)) {
-        return true;
-      } else {
-        return false;
-      }
-    },
+
     displayPosts(i) {
       //Split between two columns.
 
@@ -140,6 +131,9 @@ export default Vue.extend({
         "POST"
       );
 
+      //Get Friends list
+      this.getFriendsList();
+
       this.$forceUpdate();
     },
     async deleteFriend(name) {
@@ -158,8 +152,25 @@ export default Vue.extend({
         { handle: Session.user.handle },
         "POST"
       );
+
+      //Get Friends list
+      this.getFriendsList();
       //Update the posts
       this.$forceUpdate();
+    },
+    async getFriendsList() {
+      let handles = await api(
+        "friends/getHandle",
+        { handle: Session.user.handle },
+        "POST"
+      );
+      console.log(handles);
+      for (let i = 0; i < handles.length; i++) {
+        let user = this.users.filter((user) => user.handle === handles[i]);
+        if (user.length != 0) {
+          this.friends = this.friends.concat(user);
+        }
+      }
     },
     findUsers() {
       //Clear users

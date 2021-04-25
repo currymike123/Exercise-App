@@ -11,7 +11,7 @@ app
   .get("/", (req, res) => {
     res.send(model.Get());
   })
-  .get("/getHandle", (req, res) => {
+  .post("/getHandle", (req, res) => {
     res.send(model.GetHandle(req.body));
   })
   .post("/", (req, res) => {
