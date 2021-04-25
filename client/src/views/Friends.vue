@@ -139,9 +139,7 @@ export default Vue.extend({
         { handle: Session.user.handle },
         "POST"
       );
-      console.log("here are the posts");
-      console.log(this.posts);
-      //Update the posts
+
       this.$forceUpdate();
     },
     async deleteFriend(name) {
@@ -152,6 +150,13 @@ export default Vue.extend({
           friend: name.handle,
         },
         "DELETE"
+      );
+
+      //Get all the posts
+      this.posts = await api(
+        "posts/feed",
+        { handle: Session.user.handle },
+        "POST"
       );
       //Update the posts
       this.$forceUpdate();
