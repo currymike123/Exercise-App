@@ -101,7 +101,7 @@ export default Vue.extend({
       "POST"
     );
 
-    this.getFriendsList();
+    //this.getFriendsList();
   },
   methods: {
     //
@@ -132,7 +132,7 @@ export default Vue.extend({
       );
 
       //Get Friends list
-      this.getFriendsList();
+      //this.getFriendsList();
 
       this.$forceUpdate();
     },
@@ -154,7 +154,7 @@ export default Vue.extend({
       );
 
       //Get Friends list
-      this.getFriendsList();
+      //this.getFriendsList();
       //Update the posts
       this.$forceUpdate();
     },
