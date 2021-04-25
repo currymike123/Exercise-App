@@ -63,12 +63,10 @@ export default Vue.extend({
     //Update the current user and get entries.
 
     this.user = Session.user;
-    console.log("THIS IS THE SESSION USER");
-    console.log(Session.user);
+
     this.newEntry.user = Session.user;
     const updatedEntries = await GetPostsForUser(Session.user.handle);
     this.entries = updatedEntries.reverse();
-    console.log(this.entries);
   },
   methods: {
     async addEntry() {
@@ -93,11 +91,12 @@ export default Vue.extend({
     },
     async deleteEntry(i) {
       //Remove stored version
-      let index = this.entries.length - i;
+      let index = this.entries.length - 1 - i;
+      console.log(this.entries.length);
       await DeletePost(index);
       //Get the new set of Entries
       const updatedEntries = await GetPostsForUser(Session.user.handle);
-      this.entries = updatedEntries;
+      this.entries = updatedEntries.reverse();
     },
     displayEntries(i) {
       //Split between two columns
