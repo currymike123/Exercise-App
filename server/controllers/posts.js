@@ -11,9 +11,8 @@ app
   .get("/:post_id", (req, res) => {
     res.send(model.GetNotebook(req.params.post_id));
   })
-  .get("/feed/:post_id", (req, res) => {
-    console.log(req.body.handle);
-    res.send(model.GetFeed(req.params.post_id));
+  .post("/feed", (req, res) => {
+    res.send(model.GetFeed(req.body));
   })
   .post("/", (req, res) => {
     res.send(model.Add(req.body));

@@ -25,9 +25,10 @@ module.exports.Update = (data) => {
   const index = friendList.findIndex(function (fIndex) {
     return fIndex.handle === data.handle;
   });
-
-  friendList[index].friends.push(data.friend);
-
+  //Check to see if the friend is already there.
+  if (!friendList[index].friends.includes(data.friend)) {
+    friendList[index].friends.push(data.friend);
+  }
   return friendList[index];
 };
 

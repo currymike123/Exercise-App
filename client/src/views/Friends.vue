@@ -51,19 +51,15 @@
       </div>
       <div class="column page-offset">
         <div v-for="(post, i) in posts" :key="i">
-          <div v-if="onFriendsList(posts[i]) == true">
-            <div v-if="displayPosts(i) == false">
-              <FriendPost :post="post" />
-            </div>
+          <div v-if="displayPosts(i) == false">
+            <FriendPost :post="post" />
           </div>
         </div>
       </div>
       <div class="column page-offset">
         <div v-for="(post, i) in posts" :key="i">
-          <div v-if="onFriendsList(posts[i]) == true">
-            <div v-if="displayPosts(i) == true">
-              <FriendPost :post="post" />
-            </div>
+          <div v-if="displayPosts(i) == true">
+            <FriendPost :post="post" />
           </div>
         </div>
       </div>
@@ -77,10 +73,8 @@ import Vue from "vue";
 import FriendBlock from "../components/FriendBlock";
 import FriendList from "../components/FriendList";
 import FriendPost from "../components/FriendPost";
-import { getAllEntries } from "../models/Entries";
-import { updateUsers } from "../models/Users";
-import { getUser } from "../models/Session";
 import { api } from "../models/myFetch";
+import Session from "../models/Session";
 
 export default Vue.extend({
   //
@@ -97,13 +91,18 @@ export default Vue.extend({
     FriendBlock,
     FriendList,
   },
-  mounted() {
-    //Get the current user to add friends
-    this.currentUser = getUser();
-    //Get all the entries for the feed
-    this.posts = getAllEntries();
+  async mounted() {
     //Get all the users for search
-    this.users = api("friends", {}, "GET");
+    this.users = await api("friends/", null, "GET");
+    console.log(this.users);
+    //Get the current user to add friends
+    //this.currentUser = getUser();
+    //Get all the entries for the feed
+    this.posts = await api(
+      "posts/feed",
+      { handle: Session.user.handle },
+      "POST"
+    );
     //Get all the current users friends
   },
   methods: {
@@ -113,10 +112,6 @@ export default Vue.extend({
       this.$forceUpdate();
     },
     onFriendsList(curPost) {
-      //If you aren't my friend I don't want to see your post.
-      if (!this.currentUser.friends) {
-        return false;
-      }
       //If you are on my friends list show your posts.
       if (this.currentUser.friends.includes(curPost.user.email)) {
         return true;
@@ -133,33 +128,31 @@ export default Vue.extend({
         return true;
       }
     },
-    addFriend(name) {
-      //If there is no friends field in CurrentUser add it and add friend to it.
-      if (!this.currentUser.friends) {
-        this.currentUser.friends = [];
-        this.currentUser.friends.push(name.email);
-        updateUsers(this.currentUser);
-        this.currentUser = getUser();
-        console.log("First Friends");
-      }
-
-      // Check to see if the friend is already on list.  If not add them.
-      if (!this.currentUser.friends.includes(name.email)) {
-        this.currentUser.friends.push(name.email);
-        updateUsers(this.currentUser);
-        this.currentUser = getUser();
-      }
+    async addFriend(name) {
+      await api("friends/", {
+        handle: Session.user.handle,
+        friend: name.handle,
+      });
+      //Get all the posts
+      this.posts = await api(
+        "posts/feed",
+        { handle: Session.user.handle },
+        "POST"
+      );
+      console.log("here are the posts");
+      console.log(this.posts);
       //Update the posts
       this.$forceUpdate();
     },
-    deleteFriend(name) {
-      for (let i = 0; i < this.currentUser.friends.length; i++) {
-        if (name.email == this.currentUser.friends[i]) {
-          this.currentUser.friends.splice(i, 1);
-          updateUsers(this.currentUser);
-          this.currentUser = getUser();
-        }
-      }
+    async deleteFriend(name) {
+      await api(
+        "friends/",
+        {
+          handle: Session.user.handle,
+          friend: name.handle,
+        },
+        "DELETE"
+      );
       //Update the posts
       this.$forceUpdate();
     },
