@@ -43,9 +43,17 @@ module.exports.GetNotebook = (handle) => {
 };
 
 module.exports.GetFeed = (handle) => {
-  console.log("In GetFeed");
   let handles = friends.GetHandle(handle);
-  return handles.forEach((handle) =>
-    list.filter((post) => post.user.handle == handle)
-  );
+
+  let posts = [];
+
+  for (i = 0; i < handles.length; i++) {
+    let userPosts = list.filter((post) => post.user.handle === handles[i]);
+
+    if (userPosts.length != 0) {
+      posts = posts.concat(userPosts);
+    }
+  }
+
+  return posts;
 };
