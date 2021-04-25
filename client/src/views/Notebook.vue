@@ -72,7 +72,7 @@ export default Vue.extend({
   },
   methods: {
     async addEntry() {
-      const sentPost = await AddPost(this.newEntry);
+      await AddPost(this.newEntry);
 
       //Reset newEntry
       this.newEntry = {
