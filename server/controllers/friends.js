@@ -15,16 +15,11 @@ app
     res.send(model.GetHandle(req.body));
   })
   .post("/", (req, res) => {
-    res.send(model.Add(req.body));
+    res.send(model.Update(req.body));
   })
   .post("/Register", (req, res) => {
     res.send(model.Register(req.body));
   })
-  .patch("/", (req, res) =>
-    res.send(model.Delete(req.body.handle, req.body.friend))
-  )
-  .delete("/", (req, res) =>
-    res.send(model.Delete(req.body.handle, req.body.friend))
-  );
+  .delete("/", (req, res) => res.send(model.Delete(req.body)));
 
 module.exports = app;
