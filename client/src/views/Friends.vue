@@ -39,7 +39,7 @@
             </div>
           </div>
           <div v-else>
-            <div v-for="(friends, i) in this.friends" :key="i">
+            <div v-for="(friends, i) in friends" :key="i">
               <FriendList
                 :friends="friends"
                 @addFriend="addFriend(searchedUsers[i])"
@@ -85,7 +85,7 @@ export default Vue.extend({
     search: null,
     onSearch: true,
     currentUser: {},
-    friends: {},
+    friends: [],
   }),
   components: {
     FriendPost,
@@ -101,7 +101,7 @@ export default Vue.extend({
       "POST"
     );
 
-    //this.getFriendsList();
+    this.getFriendsList();
   },
   methods: {
     //
@@ -131,8 +131,8 @@ export default Vue.extend({
         "POST"
       );
 
-      //Get Friends list
-      //this.getFriendsList();
+      // Get Friends list
+      this.getFriendsList();
 
       this.$forceUpdate();
     },
@@ -153,24 +153,23 @@ export default Vue.extend({
         "POST"
       );
 
-      //Get Friends list
-      //this.getFriendsList();
+      // Get Friends list
+      this.getFriendsList();
       //Update the posts
       this.$forceUpdate();
     },
     async getFriendsList() {
-      let handles = await api(
-        "friends/getHandle",
-        { handle: Session.user.handle },
-        "POST"
-      );
-      console.log(handles);
-      for (let i = 0; i < handles.length; i++) {
-        let user = this.users.filter((user) => user.handle === handles[i]);
-        if (user.length != 0) {
-          this.friends = this.friends.concat(user);
-        }
-      }
+      this.friends = await api("friends/getfriendsList", {
+        handle: Session.user.handle,
+      });
+      console.log("THis is the getFriendsList");
+      console.log(this.friends);
+      // for (let i = 0; i < handles.length; i++) {
+      //   let user = this.users.filter((user) => user.handle === handles[i]);
+      //   if (user.length != 0) {
+      //     this.friends = this.friends.concat(user);
+      //   }
+      // }
     },
     findUsers() {
       //Clear users

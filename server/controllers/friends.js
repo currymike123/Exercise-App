@@ -14,6 +14,9 @@ app
   .post("/getHandle", (req, res) => {
     res.send(model.GetHandle(req.body));
   })
+  .post("/GetFriendsList", (req, res) => {
+    res.send(model.GetFriendsList(req.body));
+  })
   .post("/", (req, res) => {
     res.send(model.Update(req.body));
   })

@@ -16,6 +16,15 @@ module.exports.GetHandle = (handle) => {
   return tempObj.friends;
 };
 
+module.exports.GetFriendsList = (handle) => {
+  console.log("This is the handle getFriendsList");
+  console.log(handle);
+  const tempObj = friendList.find((user) => user.handle === handle.handle);
+  console.log("This is the returned getFriendsList");
+  console.log(tempObj.friends);
+  return tempObj.friends;
+};
+
 module.exports.Register = (user) => {
   friendList.push(user);
   return user;

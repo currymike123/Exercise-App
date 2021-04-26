@@ -6,7 +6,7 @@
         alt="Placeholder image"
       />
     </figure>
-    <div class="ml-3">{{ friends.name }}</div>
+    <div class="ml-3">{{ friends }}</div>
 
     <a class="card-footer-item" @click.prevent="$emit('deleteFriend')"
       >UnFriend</a
