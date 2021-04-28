@@ -6,7 +6,6 @@
 
     <ul class="menu-list">
       <li><router-link to="/account">Account</router-link></li>
-      <li><router-link to="/reports">Reports</router-link></li>
     </ul>
   </aside>
 </template>

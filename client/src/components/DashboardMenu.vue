@@ -6,7 +6,6 @@
 
     <ul class="menu-list">
       <li><router-link to="/history">History</router-link></li>
-      <li><router-link to="/progress">Progress</router-link></li>
     </ul>
   </aside>
 </template>

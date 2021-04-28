@@ -8,45 +8,23 @@
         <table class="table dash-offset">
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Time</th>
               <th>Exercise</th>
               <th>Reps</th>
               <th>Sets</th>
               <th>Distance</th>
               <th>Duration</th>
+              <th>Notes</th>
             </tr>
           </thead>
 
           <tbody>
-            <tr>
-              <th>3/2/21</th>
-              <td>3:00 PM</td>
-              <td>Squats</td>
-              <td>10</td>
-              <td>10</td>
-              <td>N/A</td>
-              <td>30 mins</td>
-            </tr>
-
-            <tr>
-              <th>3/1/21</th>
-              <td>1:00 PM</td>
-              <td>Bench</td>
-              <td>10</td>
-              <td>10</td>
-              <td>N/A</td>
-              <td>20 mins</td>
-            </tr>
-
-            <tr>
-              <th>2/27/21</th>
-              <td>1:00 PM</td>
-              <td>RUN</td>
-              <td>N/A</td>
-              <td>N/A</td>
-              <td>1.1 miles</td>
-              <td>15 mins</td>
+            <tr v-for="(entry, i) in entries" :key="i">
+              <td>{{ entry.exercise }}</td>
+              <td>{{ entry.reps }}</td>
+              <td>{{ entry.sets }}</td>
+              <td>{{ entry.distance }}</td>
+              <td>{{ entry.duration }}</td>
+              <td>{{ entry.notes }}</td>
             </tr>
           </tbody>
         </table>
@@ -58,10 +36,21 @@
 
 <script>
 import DashboardMenu from "@/components/DashboardMenu";
+import Session from "../models/Session";
+import { GetPostsForUser } from "../models/Entries";
 
 export default {
+  data: () => ({
+    entries: [],
+  }),
   components: {
     DashboardMenu,
+  },
+  async mounted() {
+    //Update the current user and get entries.
+
+    const updatedEntries = await GetPostsForUser(Session.user.handle);
+    this.entries = updatedEntries.reverse();
   },
 };
 </script>
