@@ -162,8 +162,7 @@ export default Vue.extend({
       this.friends = await api("friends/getfriendsList", {
         handle: Session.user.handle,
       });
-      console.log("THis is the getFriendsList");
-      console.log(this.friends);
+
       // for (let i = 0; i < handles.length; i++) {
       //   let user = this.users.filter((user) => user.handle === handles[i]);
       //   if (user.length != 0) {

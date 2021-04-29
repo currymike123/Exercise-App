@@ -44,18 +44,16 @@ module.exports.GetNotebook = (handle) => {
 
 module.exports.GetFeed = (data) => {
   let handles = friends.GetHandle(data.handle);
-  console.log("There are the reutrned handles");
-  console.log(handles);
+
   let posts = [];
 
   for (i = 0; i < handles.length; i++) {
     let userPosts = list.filter((post) => post.user.handle === handles[i]);
-    console.log("There are the userPosts");
-    console.log(userPosts);
+
     if (userPosts.length != 0) {
       posts = posts.concat(userPosts);
     }
   }
-  console.log(posts);
+
   return posts;
 };

@@ -81,35 +81,9 @@ export default {
   methods: {
     async submitForm() {
       //Check if the user exists and if they do log them in.
-      console.log("running");
-      console.log(this.handle);
+
       await Login(this.handle, this.password);
       this.$router.push("Admin");
-      //   if (this.usersLog.length == 0) {
-      //     this.msg = "There are no users.  Please Sign up first.";
-      //   }
-
-      //   for (let i = 0; i < this.usersLog.length; i++) {
-      //     if (this.email == this.usersLog[i].email) {
-      //       this.exists = true;
-
-      //       if (this.password == this.usersLog[i].password) {
-      //         //Password matches so set as Session user.
-
-      //         setUser(this.usersLog[i]);
-      //         console.log(getUser());
-      //         this.$router.push("Admin");
-      //       } else {
-      //         this.msg = "incorrect password";
-      //         this.emailHasDanger = false;
-      //         this.emailHasSuces = true;
-      //         this.passwordHasDanger = true;
-      //       }
-      //     } else {
-      //       this.msg = "user doesn't exist";
-      //       this.emailHasDanger = true;
-      //     }
-      //   }
     },
   },
 };

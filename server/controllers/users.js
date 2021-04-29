@@ -9,7 +9,6 @@ const app = express.Router();
 app
   .get("/", LoginRequired, (req, res) => {
     res.send(model.GetAll());
-    console.log(req.headers);
   })
   .get("/:user_id", LoginRequired, (req, res) =>
     res.send(model.Get(req.params.user_id))

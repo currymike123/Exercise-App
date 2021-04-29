@@ -87,12 +87,11 @@ export default Vue.extend({
       //Get the new set of Entries
       const updatedEntries = await GetPostsForUser(Session.user.handle);
       this.entries = updatedEntries.reverse();
-      console.log(this.entries);
     },
     async deleteEntry(i) {
       //Remove stored version
       let index = this.entries.length - 1 - i;
-      console.log(this.entries.length);
+
       await DeletePost(index);
       //Get the new set of Entries
       const updatedEntries = await GetPostsForUser(Session.user.handle);
