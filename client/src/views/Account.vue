@@ -16,7 +16,7 @@
               <p class="control is-expanded">
                 <textarea
                   class="textarea"
-                  v-model="user.bio"
+                  v-model="bio"
                   placeholder="Bio"
                 ></textarea>
               </p>
@@ -32,17 +32,21 @@
             <div class="field">
               <div class="file has-name is-boxed">
                 <label class="file-label">
-                  <input class="file-input" type="file" name="resume" />
+                  <input
+                    class="file-input"
+                    type="file"
+                    name="resume"
+                    @change="acceptImage"
+                    accept="image/*"
+                  />
                   <span class="file-cta">
-                    <span class="file-icon">
-                      <i class="fas fa-upload"></i>
-                    </span>
+                    <img style="max-height:150px;" :src="image" alt="" />
                     <span class="file-label">
                       Choose a file…
                     </span>
                   </span>
                   <span class="file-name">
-                    Picture.jpg
+                    {{ fileName }}
                   </span>
                 </label>
               </div>
@@ -80,17 +84,38 @@ import Session from "../models/Session";
 export default {
   data: () => ({
     user: {},
+    image: "",
+    bio: "",
+    fileName: "Picture.jpg",
   }),
   components: {
     AdminMenu,
   },
   mounted() {
     //let currentUser = getUser();
+    console.log(this.bio);
     this.user = Session.user;
   },
   methods: {
+    acceptImage(data) {
+      console.log("triggered");
+      const currentImage = data.target.files[0];
+      this.processBase64(currentImage);
+    },
+    processBase64(imageFile) {
+      const reader = new FileReader();
+
+      reader.onload = (x) => {
+        this.image = x.target.result;
+      };
+
+      reader.readAsDataURL(imageFile);
+
+      this.fileName = imageFile.name;
+      console.log(this.bio);
+    },
     update() {
-      //updateUsers(this.user);
+      //send the user, image, and bio to the server
     },
   },
 };
