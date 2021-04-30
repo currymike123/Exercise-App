@@ -116,6 +116,9 @@ export default {
     },
     update() {
       //send the user, image, and bio to the server
+
+      //send to the notebook page
+      this.$router.push("Notebook");
     },
   },
 };
