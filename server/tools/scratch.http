@@ -26,7 +26,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJNa
 
 ####
 
-http://localhost:3000/posts
+####
+
+POST http://localhost:3000/posts/exercise
+Content-Type: application/json
 //Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJNaWtlIiwibGFzdE5hbWUiOiJqYWNzb24iLCJoYW5kbGUiOiJAbWlrZSIsImlhdCI6MTYxODUwODE5M30.C0VlHkEoAFa7F8UidSMorumdug8ZXPGMVcpccfE06GY
 // My token
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJNaWtlIiwibGFzdE5hbWUiOiJqYWNzb24iLCJoYW5kbGUiOiJAbWlrZSIsImlhdCI6MTYxODUwODE5M30.C0VlHkEoAFa7F8UidSMorumdug8ZXPGMVcpccfE06GY
+{
+    "exercise": "run"
+}
+####

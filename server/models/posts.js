@@ -3,6 +3,31 @@ const friends = require("./friends");
 
 const list = [];
 
+const exercises = [
+  "running",
+  "run",
+  "lift",
+  "lifting",
+  "yoga",
+  "cardio",
+  "bjj",
+  "weights",
+  "squat",
+  "lunge",
+  "push-up",
+  "press",
+  "fly",
+];
+
+module.exports.Exercise = (data) => {
+  //check the data to see if it matches the list of exercises
+  return exercises.filter((option) => {
+    return (
+      option.toString().toLowerCase().indexOf(data.exercise.toLowerCase()) >= 0
+    );
+  });
+};
+
 module.exports.GetAll = () =>
   list.map((x, i) => ({
     ...x,

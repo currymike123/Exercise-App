@@ -11,7 +11,23 @@
             <li><a>New Entry</a></li>
           </ul>
         </aside>
+        <section>
+          <b-field label="Search for exercises">
+            <b-autocomplete
+              rounded
+              v-model="name"
+              v-on:input="filteredDataArray"
+              placeholder="e.g. run"
+              icon="magnify"
+              clearable
+              @select="(option) => (selected = option)"
+            >
+              <template #empty>No results found</template>
+            </b-autocomplete>
+          </b-field>
+        </section>
       </div>
+
       <div class="column page-offset">
         <notebook-new-entry :newEntry="newEntry" @add="addEntry" />
         <div class="content-item mb-4" v-for="(entry, i) in entries" :key="i">
@@ -37,6 +53,7 @@ import NotebookEntry from "../components/NotebookEntry";
 import NotebookNewEntry from "../components/NotebookNewEntry";
 //import { getEntries, deleteEntries } from "../models/Entries";
 import Session from "../models/Session";
+import { api } from "../models/myFetch";
 import { AddPost, GetPostsForUser, DeletePost } from "../models/Entries";
 
 //import { getUser } from "../models/Session";
@@ -53,7 +70,10 @@ export default Vue.extend({
       notes: "",
     },
     entries: [],
+    list: [],
+    data: [],
     user: {},
+    name: "",
   }),
   components: {
     NotebookEntry,
@@ -69,6 +89,11 @@ export default Vue.extend({
     this.entries = updatedEntries.reverse();
   },
   methods: {
+    async filteredDataArray() {
+      this.list = await api("posts/exercise", { exercise: this.name }, "POST");
+      console.log(this.list);
+    },
+
     async addEntry() {
       await AddPost(this.newEntry);
 

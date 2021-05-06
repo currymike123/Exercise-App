@@ -23,6 +23,9 @@ app
   .delete("/:post_id", (req, res) => res.send(model.Delete(req.params.post_id)))
   .get("/notebook", (req, res) => {
     res.send(model.GetNotebook(req.user.handle));
+  })
+  .post("/exercise", (req, res) => {
+    res.send(model.Exercise(req.body));
   });
 
 module.exports = app;
